@@ -1,0 +1,97 @@
+:root {
+    --shadow-color: #ffffff;
+    --shadow-color-light: white;
+}
+
+#main {
+    background: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+#main:before {
+    content: "";
+    background: url(../images/background_.svg) no-repeat center center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+    filter: grayscale(1);
+}
+
+#logo {
+    filter: grayscale(1);
+}
+
+.fa-lock:before {
+    content: "\f023";
+    color: #6d1c74;
+}
+
+.fa-user-alt:before {
+    content: "\f406";
+    color: #000000;
+}
+
+
+a.button {
+    font-size: 30px;
+    margin-top: 41px;
+    width: 100.1%;
+}
+
+.login_c1 {
+    color: black;
+}
+
+.button span::before {
+    color: #78277e;
+}
+
+.login_callout {
+    font-size: 20px;
+    margin: 0;
+}
+
+a.label-link:hover, .login_callout a:hover {
+    text-decoration: underline;
+}
+
+menu ul li.menu_signup:hover, menu ul li.menu_signup:hover a, menu ul li.menu_signup:hover a:visited {
+    border-color: #333333;
+    color: #333333;
+}
+
+
+menu ul li:nth-child(-n+6) a:hover, menu ul li:nth-child(-n+6) a:visited:hover {
+    transition: 3s linear;
+    animation: neon 3s infinite;
+}
+
+.mt_1 {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    background: -webkit-linear-gradient(-70deg,#602665,#0d8036,#756de9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+}
+
+.main_text {
+    flex-direction: column;
+}
+
+.diamond {
+    margin-left: 17px;
+}
+

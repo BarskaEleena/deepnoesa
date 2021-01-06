@@ -1459,7 +1459,7 @@ form input {
     right: 20%;
   }
 
-/*
+
 
 .octicon{display:inline-block;vertical-align:text-top;fill:currentColor;}
 
@@ -1521,8 +1521,7 @@ form input {
 .mr-3-fluid{margin-right:1rem!important;}
 .flex-shrink-0{flex-shrink:0!important;}
 .circle{border-radius:50%!important;}
-img{border-style:none;}
-*{box-sizing:border-box;}
+
 .unselectable{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 .f6-mktg-fluid{font-size:.75rem!important;}
 .f6-mktg-fluid,.h5-mktg-fluid,.h6-mktg-fluid{font-family:Alliance No\.1,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;}
@@ -1633,4 +1632,3 @@ img{border-style:none;}
 .home-pr-screen{width:129.5%;margin-top:-10%;opacity:.25;}
 .rounded-pill{border-radius:500px;}
 .opacity-4{opacity:.4;}
-*/

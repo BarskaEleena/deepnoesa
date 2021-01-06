@@ -1201,6 +1201,48 @@ form input {
 }
 
 
+.preloader_shining {
+    width:400px; 
+    height: 300px;
+    clip-path: url(#clipping);
+    position: absolute;
+    left: 39%;
+    z-index: 999;
+    margin-left: 25px;
+    margin-top: 115px;
+    -webkit-animation-name: ShineAnimation;
+    -webkit-animation-duration: 2.3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(.12,.89,.98,.47);
+    opacity: 0;
+}
+
+.preloader_shining.anim {
+    opacity: 1;
+}
+
+@-webkit-keyframes ShineAnimation{
+    from {
+        background-repeat:no-repeat;
+        background-image:-webkit-linear-gradient(
+            .45turn,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.7) 45%,
+            rgba(255, 255, 255, 1.0) 60%,
+            rgba(255, 255, 255, 0.0) 87%,
+            rgba(255, 255, 255, 0.0) 100%
+        );
+        background-position:-250px -250px;
+        background-size: 800px 900px
+    }
+    to {
+        background-repeat:no-repeat;
+        background-position:950px 250px;
+    }
+}
+
+
+
 
 @keyframes background_gradient {
   0% {

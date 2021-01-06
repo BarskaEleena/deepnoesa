@@ -673,6 +673,8 @@
         <script src="./js/babel.min.js"></script>
         <script src="./js/arctext.js"></script>
 
+
+
         <script type="text/babel">
             const DEBUG = false;
             const REPETITION_COUNT = 2;
@@ -749,11 +751,11 @@
 
         <script type="text/babel">
             setTimeout(function(){
-                document.querySelector(".preloader_shining").style.display = "none";
+                //document.querySelector(".preloader_shining").style.display = "none";
                 //svg.classList.add("anim");
                 document.querySelector(".disintegration-target").disintegrated = true;
                 disintegrate(document.querySelector(".disintegration-target"));
-            }, 1500);
+            }, 2500);
         </script>
 
         <script>
@@ -922,7 +924,7 @@
                             }, 3000);
                          }, 1000);
                     }, 2300);
-                }, 2200);
+                }, 3300);
                 
             var animation = bodymovin.loadAnimation({
               container: document.getElementById('bm'),

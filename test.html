@@ -425,6 +425,7 @@ font-size: 20px;
   right: 38px;
   bottom: 5px;
   transition: all 0.4s linear;
+  cursor: pointer;
 }
 
 .discount_btn:hover {
@@ -615,8 +616,16 @@ a svg {
     webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
-</style>
 
+.non_vis {
+  display: none;
+  position: absolute;
+}
+
+menu .show_non_vis:hover .non_vis {
+  display: block;
+}
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
 <script id="vertexShader" type="x-shader/x-vertex">
@@ -792,18 +801,11 @@ a svg {
   }
 </script>
 
-
-
-
-
 <div class="wrap_popup_signlog">
-    
     <div class="popup_signlog">
         <div class="close"></div>
-
             <p style="font-size: 31px;margin-bottom: 7px;">To download SmartNeural IE library,</p>
             <span style="font-size: 31px;color: #6a2082;margin-bottom: 12px;">please, sign in into your account or sign up:</span>
-
         <div class="popup_signin"><a href="#">Sign In</a></div>
         <div class="popup_signup"><a href="#">Sign Up</a></div>
     </div>
@@ -814,19 +816,48 @@ a svg {
 
 <menu>
     <ul>
-        <li class="download"><a href="#">Download</a></li>
+        <li class="download"><a href="#">Download API</a></li>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">H-Incubator</a></li>
+        <li><a href="#">Games</a></li>
+        <li><a href="#">Pricing</a></li>
         <li><a href="#">Team</a></li>
-        <li><a href="#">Contents 
+        <li class="show_non_vis"><a href="#">Contents 
             <svg x="0px" y="0px" viewBox="0 0 14 8" xml:space="preserve" fill="none" class="icon-chevon-down-mktg position-absolute position-lg-relative">
                 <path d="M1,1l6.2,6L13,1"></path>
             </svg>
             </a>
+
+            <div class="non_vis">
+              <ul>
+                <li>Introduction</li>
+                <li>Importance of the FPCN-DAN-DMN system</li>
+                <li>Neuromathematic basis: Smart Neural Integral Equation</li>
+                <li>Husserl's phenomenological reduction algorithm</li>
+                <li>Data model for calculating PhR-scale parameters</li>
+                <li>Applications</li>
+              </ul>
+            </div>
         </li>
     </ul>
 </menu>
+<!--
+Introduction
+2) Importance of the FPCN-DAN-DMN system
+3) Neuromathematic basis: Smart Neural Integral Equation
+4) Husserl's phenomenological reduction algorithm
+5) Data model for calculating PhR-scale parameters
+	- visual data
+	-audio data
+	-work with text
+		-text processing model: visual imagery
+		- text processing model: neural activity
+6) Applications
+	- recommended systems
+	-games with biological feedback
+	-neuromarketing systems for designing advertising video content
+	-c-commerce
+	-intellectual help bots
+-->
 
 <script>
 document.querySelector(".close").onclick = function() {
@@ -928,19 +959,22 @@ https://www.cssscript.com/demo/book-page-flip-animation/
       <h1 class="page__content-title">Contents</h1>
         <table class="page__content-table">
           <tr>
-            <td align="left">Part I</td><td align="left">The Psycohistorians</td><td align="right">3</td>
+            <td align="left">Part I</td><td align="left">Introduction</td><td align="right">3</td>
           </tr>
           <tr>
-            <td align="left">Part II</td><td align="left">The Encyclopedists</td><td align="right">43</td>
+            <td align="left">Part II</td><td align="left">Importance of the FPCN-DAN-DMN system</td><td align="right">43</td>
           </tr>
           <tr>
-            <td align="left">Part III</td><td align="left">The Mayors</td><td align="right">87</td>
+            <td align="left">Part III</td><td align="left">Neuromathematic basis: Smart Neural Integral Equation</td><td align="right">87</td>
           </tr>
           <tr>
-            <td align="left">Part IV</td><td align="left">The Traders</td><td align="right">147</td>
+            <td align="left">Part IV</td><td align="left">Husserl's phenomenological reduction algorithm</td><td align="right">147</td>
           </tr>
           <tr>
-            <td align="left">Part V</td><td align="left">The Merchant Princes</td><td align="right">173</td>
+            <td align="left">Part V</td><td align="left">Data model for calculating P<span style="font-size: 10px;">h</span>R-scale parameters</td><td align="right">173</td>
+          </tr>
+          <tr>
+            <td align="left">Part VI</td><td align="left">Applications</td><td align="right">173</td>
           </tr>
         </table>
         <p style="
@@ -1028,7 +1062,7 @@ https://www.cssscript.com/demo/book-page-flip-animation/
 </p>
 
 <p class="discount_btn">
-  Review and get discount 30%
+  Sign up and get 3 months free
 </p>
 
 <div id="new"></div> 
@@ -1069,7 +1103,7 @@ function preView() {
         texture.wrapT = THREE.RepeatWrapping;
         texture.minFilter = THREE.LinearFilter;
         loader.load( 
-          'https://barskaeleena.github.io/neuroaesthetics/husserl.jpg',
+          'https://barskaeleena.github.io/neuroaesthetics/images/footer_logo.svg',
           function environment_load(tex) {
             environment = tex;
             environment.wrapS = THREE.RepeatWrapping;

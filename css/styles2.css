@@ -266,11 +266,6 @@ body.anim #logo {
   pointer-events:none;
 }
 
-.content-image {
-    height: 100%;
-    padding-left: 10px;
-}
-
 .after {
     width:100%;
     -webkit-transition: width 4s ease-in-out;
@@ -281,12 +276,14 @@ body.anim #logo {
 }
 
 .before {
-z-index: 21;
+    z-index: 21;
     background-color: transparent;
 }
+
 .before img {
-width: 364px;
+    width: 364px;
 }
+
 .after.s {
     width:100%;
 }
@@ -558,8 +555,6 @@ menu ul li.menu_signup {
 }
 
 menu ul li.menu_signup:hover,  menu ul li.menu_signup:hover a, menu ul li.menu_signup:hover a:visited {
-    /*border-color: #78277e;
-    color: #78277e;*/
     border-color: var(--hover-color-1);
     color: var(--hover-color-1);
 }
@@ -690,15 +685,6 @@ a.button {
     -webkit-transform: rotateX(90deg) translateZ(36.3px);
     transform: rotateX(90deg) translateZ(36.3px);
 }
-
-/*#logo_glowing {
-    width: 947px;
-    z-index: 0;
-    margin-top: 122px;
-    margin-left: 167px;
-    height: 716px;
-    transition: all 3s linear;
-}*/
 
 .mt_1 {
     display: flex;
@@ -1010,7 +996,7 @@ footer ul {
 }
         
 .dt_1 {
-    background: -webkit-linear-gradient(-70deg,#602665,#0d8036,#756de9); /*-webkit-linear-gradient(-70deg,#602665,#e96da4);*/
+    background: -webkit-linear-gradient(-70deg,#602665,#0d8036,#756de9); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-box-decoration-break: clone;
@@ -1255,12 +1241,8 @@ body.anim #main::before {
   0% {
     filter: grayscale(100%);
   }
-
   50% {
-    filter: grayscale(50%);
-  }
-  80% {
-    filter: grayscale(0%);
+    filter: grayscale(75%);
   }
   100% {
     filter: grayscale(100%);
@@ -1314,6 +1296,13 @@ body.anim #main::before {
     content: attr(data-front);
 }
 
+.miracle_block {
+    margin-bottom: 300px;
+            text-align: center;
+            margin-left: 860px;
+            margin-top: -115px;
+}
+
   .miracle {
     font-size: 19.5px;
     text-transform: uppercase;
@@ -1321,6 +1310,11 @@ body.anim #main::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-box-decoration-break: clone;
+    font-size: 22.6px;
+                display: flex;
+                flex-direction: column;
+                justify-content: right;
+                align-items: initial;
   }
 
   .particle_block .button span {
@@ -1733,13 +1727,13 @@ body.anim #main::before {
 }
 
 
-/* 3D-BUTTON */
+/* 3D-BUTTON HUSSERL */
 
 html{
     margin-right: -7px;
 }
 
-.scene{
+.scene {
     width: 300px;
     height: 100px;
     margin: 60px auto;
@@ -1750,8 +1744,21 @@ html{
     margin-left: 284px;
 }
 
-.scene:hover .cube{
+@-webkit-keyframes btn_3d {
+    0% {transform: rotateX(0deg);}
+    50% {transform: rotateX(-90deg);}
+    100% {transform: rotateX(0deg);}
+}
 
+.cube.animate {
+    -moz-animation: btn_3d 2s ease-out 2; 
+    -webkit-animation: btn_3d 2s ease-out 2;
+    -ms-animation: btn_3d 2s ease-out 2; 
+    -o-animation: btn_3d 2s ease-out 2; 
+    animation: btn_3d 2s ease-out 2;
+}
+
+.scene:hover .cube {
   transform: rotateX(-90deg);
 }
 
@@ -1808,7 +1815,173 @@ flex-lg-row {
     flex-direction: row-reverse!important;
 }
 
+.btn_2 {
+    width: 178px;
+                font-size: 16px!important;
+                height: 48px;
+                border-radius: 11px;
+                float: right;
+}
+
 .btn_2 span:before {
     border-radius: 15px;
     background-color: #5a1d5f;
+}
+
+
+/* INVERT BLOCK */
+
+.invert_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 150px;
+}
+
+.invert_block_text {
+    position: absolute;
+    margin-top: 374px;
+    margin-left: 137px;
+}
+
+.ibt_1 {
+    color: #ffffff!important;
+    margin: 0;
+    font-size: 31px;
+}
+
+.ibt_2 {
+    color: #000000;
+    font-size: 1.5rem!important;
+    margin: 0;
+    display: none;
+}
+
+.ibt_3 {
+    color: #ffffff!important;
+    font-weight: 100;
+    max-width: 387px;
+    margin: 0;
+}
+
+.invert_p {
+    FONT-SIZE: 42px;
+    color: black;
+    text-align: center;
+    margin: 80px 0px;
+}
+
+.invert_img {
+    width: 1032px;
+    ALIGN-ITEMS: CENTER;
+    height: 236px;
+    border-radius: 10px;
+}   
+
+
+
+
+.invert_block .wrapper {
+    width: 1032px;
+    height: 236px;
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: unset;
+    z-index: 0;
+  }
+  
+.invert_block .before,
+.invert_block .after {
+    width:100%;
+    height:100%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+  
+.invert_block .after {
+    z-index: 22;
+    overflow: hidden;
+    width: 0%;
+}
+
+@-webkit-keyframes invert_block {
+    0% {width:0%;}
+    50% {width:100%;}
+    100% {width:0%;}
+}
+
+.invert_wrap.animate .after {
+    -moz-animation: invert_block 10s linear 1; 
+    -webkit-animation: invert_block 10s linear 1; 
+    -ms-animation: invert_block 10s linear 1; 
+    -o-animation: invert_block 10s linear 1;  
+    animation: invert_block 10s linear 1;
+    width: 0%;
+}
+
+    
+  
+.invert_block .before {
+      z-index: 21;
+      background-color: transparent;
+}
+  
+.invert_block .before img {
+      width: 1032px;
+}
+  
+
+.home-git-log-light.col-12:after {
+    top: 178px;
+}
+/*
+@-webkit-keyframes invert_block {
+    0% {filter:invert(0%);}
+    20% {filter:invert(50%);}
+    40% {filter:invert(100%);}
+    80% {filter:invert(50%);}
+    100% {filter:invert(0%);}
+}
+
+.invert_img.animate {
+    -moz-animation: invert_block 5s ease-out 2; 
+    -webkit-animation: invert_block 5s ease-out 2;
+    -ms-animation: invert_block 5s ease-out 2; 
+    -o-animation: invert_block 5s ease-out 2; 
+    animation: invert_block 5s ease-out 2;
+}*/
+
+.menu_prod {
+    color: black;
+    width: 100%;
+}
+
+.menu_prod ul {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem!important;
+    font-family: sans-serif;
+    font-weight: 100;
+    color: #909090;
+    margin: 175px 250px;
+    margin-bottom: 0;
+    padding: 0;
+    margin-right: 276px;
+    background: -webkit-linear-gradient(-70deg,#602665,#0d8036,#756de9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+}
+
+#dat_svg {
+    width: 1157px;
+    margin-top: -9px;
+    margin-left: 319px;
+    z-index: 0;
 }

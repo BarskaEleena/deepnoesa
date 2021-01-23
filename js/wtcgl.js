@@ -723,9 +723,9 @@ const twodWebGL = new WTCGL(
   window.devicePixelRatio
 );
 
-window.addEventListener('resize', () => {
+/*window.addEventListener('resize', () => {
   twodWebGL.resize(window.innerWidth, window.innerHeight);
-});
+});*/
 
 
 

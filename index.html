@@ -298,9 +298,6 @@
                 <div class="menu_logo">
                     <img id="logo" src="./images/main_logo.svg">
                     <img src="./images/logo_text.svg" style="margin-top: 10px;height: 25px;">
-                    
-                    <!--<span class="menu_text" style="font-size: 20px;">DEEP NOESA</span> -->
-
                 </div>
                 <menu>
                     <ul>
@@ -361,21 +358,34 @@
             <div class="chatbot_wrapper">
               <div class="dialog_main">       
                 <div class="dialog_block">
-                  <div class="dialog_header">Chat with bot</div>
-                  <div class="dialog__"></div>
-                </div>
+                  <div class="dialog_header">Chat with bot <span class="close"></span></div>
+                  <div class="dialog__">
 
+                  </div>
+                </div>
+                
                 <div class="input_block">
                   <input type="text" placeholder="Input your message">
-                  <div class="send"></div>
+                  <div class="send">
+                    <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="69.7px" height="69.2px" viewBox="0 0 69.7 69.2" enable-background="new 0 0 69.7 69.2" xml:space="preserve" style="
+                        width: 25px;
+                        position: initial;
+                        height: auto;
+                    ">
+                    <path stroke="#000000" stroke-miterlimit="10" d="M5.8,29.8l-5-28.2C0.7,1.2,1.1,1,1.4,1.1l67.1,32.8c0.3,0.2,0.3,0.6,0,0.8
+                      L1.4,68.2c-0.3,0.2-0.7-0.1-0.6-0.4l4.6-28.9c0-0.2,0.2-0.3,0.4-0.4l38.5-3.5c0.5,0,0.5-0.8,0-0.8L6.1,30.1C6,30.1,5.8,30,5.8,29.8z
+                      "></path>
+                    </svg>
+                  </div>
                 </div>
             </div>
-
+            
               <div id="bm" style="width:200px;height:300px;">
                   <script
                   src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                   <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_768yfbtu.json" background="transparent" speed="1" style="width: 200px; height: 300px;" loop  autoplay></lottie-player>
-                </div>
+              </div>
+              
                 <div class="more_info_window">
                   <span class="close"></span>
                       <div style="
@@ -4020,13 +4030,14 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
               } else {
                 header.classList.remove("sticky");
                 document.querySelector("#scroll_menu").style.display = "none";
+                $("a[href$='#plasma_control']").removeClass("underline");
               } 
           });
 
-          document.querySelectorAll('.close').addEventListener("click", function() {
+          /*document.querySelectorAll('.close').addEventListener("click", function() {
             document.querySelector("#bm").classList.remove("animate");
             document.querySelector(".more_info_window").style.display = "none";
-          });
+          });*/
 
         </script>
 
@@ -4121,8 +4132,16 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 document.getElementById("bm").classList.add("animate");
               });
 
+              $(".explore").click(function() {
+                document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
+                document.querySelector(".chatbot_wrapper").style.width = "100%";
+                document.querySelector(".chatbot_wrapper").style.height = "100%";
+                document.querySelector(".more_info_window").style.display = "block";
+                document.getElementById("bm").classList.add("animate");
+              });
+
               
-              $(".close").click(function() {
+              $(".more_info_window .close").click(function() {
                 document.querySelector(".chatbot_wrapper").style.background = "rgb(0 0 0 / 0%)";
                 document.querySelector(".chatbot_wrapper").style.width = "unset";
                 document.querySelector(".chatbot_wrapper").style.height = "unset";
@@ -4132,8 +4151,121 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
               
               $("#scroll_menu").click(function() {
-                document.querySelector("#second_menu").style.display = "flex";
+                if (document.querySelector("#second_menu").style.display == "none") {
+                  document.querySelector("#second_menu").style.display = "flex";
+                } else {
+                  document.querySelector("#second_menu").style.display = "none";
+                }
+                
               });
+
+              function insertAfter(referenceNode, newNode) {
+                referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+              }
+
+
+              $(".dialog_header .close").click(function() {
+                document.querySelector(".dialog_main").style.display = "none";
+                  insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
+              });
+
+              var first_mess = 0;
+
+              $("#bm").click(function() {
+                if ( document.querySelector(".more_info_window").style.display == "block") {
+                  document.querySelector(".chatbot_wrapper").style.background = "rgb(0 0 0 / 0%)";
+                  document.querySelector(".chatbot_wrapper").style.width = "unset";
+                  document.querySelector(".chatbot_wrapper").style.height = "unset";
+                  document.querySelector(".more_info_window").style.display = "none";
+                  document.getElementById("bm").classList.remove("animate");
+
+                  sleep(1000);
+                } 
+
+
+                if (document.querySelector(".dialog_main").style.display == "flex") {
+                  document.querySelector(".dialog_main").style.display = "none";
+                  insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
+
+                } else {
+                  insertAfter(document.querySelector(".dialog_block") , document.querySelector("#bm"));
+                  document.querySelector(".dialog_main").style.display = "flex";
+
+                  if (first_mess == 0) {
+                    var botAnswer = document.createElement("div");
+                    botAnswer.innerHTML = "<p>Hi!</p>"; 
+                    botAnswer.classList.add("message_bot");
+                    document.querySelector(".dialog__").append(botAnswer);
+
+                    document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+
+                    setTimeout(function(){
+                      var botAnswer = document.createElement("div");
+                      botAnswer.innerHTML = "<p>My name is Barska.</p>"; 
+                      botAnswer.classList.add("message_bot");
+                      document.querySelector(".dialog__").append(botAnswer);
+
+                      document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                    }, 1000);
+
+                    setTimeout(function(){
+                      var botAnswer = document.createElement("div");
+                      botAnswer.innerHTML = "<p>Write what interests you and I will answer any of your questions about Smart Neural IE.</p>"; 
+                      botAnswer.classList.add("message_bot");
+                      document.querySelector(".dialog__").append(botAnswer);
+
+                      document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                    }, 2400);
+
+                    first_mess = 1;
+                  }
+                }
+              });
+
+
+              $(".send").click(function() {
+                var message = document.querySelector('.input_block input').value;
+                document.querySelector('.input_block input').value = "";
+                var newDiv = document.createElement("div");
+                newDiv.innerHTML = "<p>"+message+"</p>"; 
+                newDiv.classList.add("message_client");
+                document.querySelector(".dialog__").append(newDiv);
+
+                document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+
+                setTimeout(function(){
+                  var botAnswer = document.createElement("div");
+                  botAnswer.innerHTML = "<p>Thanks for your question! It is very important for me. </p>"; 
+                  botAnswer.classList.add("message_bot");
+                  document.querySelector(".dialog__").append(botAnswer);
+
+                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                }, 2000);
+
+                setTimeout(function(){
+                  var botAnswer = document.createElement("div");
+                  botAnswer.innerHTML = "<p>I am now learning based on Smart Neural IE, my intellectual skills are increasing.</p>"; 
+                  botAnswer.classList.add("message_bot");
+                  document.querySelector(".dialog__").append(botAnswer);
+
+                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                }, 4000);
+
+                setTimeout(function(){
+                  var botAnswer = document.createElement("div");
+                  botAnswer.innerHTML = "<p>The official launch of our website is scheduled for July 1, 2021. If you want to chat with me in full format and see all the power of Smart IE for linguistic processing - come to us on July 1, 2021 and I will be glad to talk with you on any topic and become your best bot friend forever.</p>"; 
+                  botAnswer.classList.add("message_bot");
+                  document.querySelector(".dialog__").append(botAnswer);
+
+                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                }, 5000);
+              });
+
+              
+              
+              
+              
+                
           });
 
 
@@ -4307,7 +4439,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             }
 
                             setTimeout(function(){
-                                show_page();
+                                //show_page();
                             }, 3000);
                          }, 1000);
                     }, 2300);

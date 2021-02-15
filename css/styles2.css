@@ -130,6 +130,15 @@ body.anim #logo {
     left: 88%;
     right: 60px;
     bottom: 0;
+    cursor: pointer;
+}
+
+.dialog_main #bm {
+    top: unset;
+    left: unset;
+    bottom: unset;
+    right: unset;
+    position: initial;
 }
 
 #bm.animate {
@@ -1638,11 +1647,9 @@ body.anim #main::before {
     width: 600px;
     height: 508px;
     cursor: pointer;
-    right: 16%;
+    right: 12%;
+    margin-top: 50px;
   }
-
-
-
 
 
 :-ms-input-placeholder{color:var(--color-text-placeholder);opacity:1;}
@@ -3541,14 +3548,58 @@ ul.pb-5-fluid.right {
     padding: 10px;
 }
 
+.dialog_header .close {
+    margin-top: -4px;
+    width: 20px;
+}
+
+.dialog_header .close:before, .dialog_header .close:after {
+    left: 15px;
+    height: 19px;
+}
+
 .dialog__ {
     height: 300;
-    background: white;
+    background: #ffffffcf;
+    overflow-y: scroll;
+    color: black;
+    padding: 10px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog__ p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.dialog__ div {
+    margin-top: 10px;
+}
+
+.message_bot {
+    background: #654e67;
+    color: white;
+    width: 200px;
+    padding: 4px 10px;
+    border-radius: 0.35pt;
+    border-radius: .375rem!important;
+}
+
+.message_client {
+    background: #e8e8e8;
+    color: black;
+    width: 200px;
+    padding: 4px 10px;
+    border-radius: .375rem!important;
+    align-self: flex-end;
 }
 
 .input_block {
     display: flex;
     flex-direction: row;
+    z-index: 999999999;
 }
 
 .input_block input {
@@ -3557,8 +3608,8 @@ ul.pb-5-fluid.right {
 
 .send {
     width: 25px;
-    background: black;
     margin-left: 12px;
+    cursor: pointer;
 }
 
 #scroll_menu {

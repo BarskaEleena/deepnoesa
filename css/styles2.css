@@ -3396,7 +3396,7 @@ ul.pb-5-fluid.right {
 }
 
 .line_height:after {
-    height: 5000px;
+    height: 6000px;
 }
 
 
@@ -3633,7 +3633,13 @@ ul.pb-5-fluid.right {
 
 
 
+#plasma_control {
+    margin-left: 26px;
+}
 
+#plasma_control .home-git-log-light:after {
+    display: none;
+}
 
 
 

@@ -24,20 +24,51 @@
 }
 
 .mt_1 {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
     background: -webkit-linear-gradient(
 -70deg
 ,#602665,#0d8036,#756de9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-box-decoration-break: clone;
+    font-size: 4.5rem!important;
+    text-align: center;
+    width: 100%;
+}
+
+.chatbot_wrapper {
+    position: inherit;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 70px;
+}
+
+canvas {
+    display: none;
 }
 
 
 #bm {
-    top: 50%;
-    left: 200px;
-    transform: translate(50%, -50%) scale(3);
+    transform: scale(3);
+    position: relative;
+    left: unset;
+    right: unset;
+    bottom: unset;
+}
+
+.contact_form {
+    font-size: 30px;
+    width: 500px;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field input {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.field p {
+    margin: 0;
 }

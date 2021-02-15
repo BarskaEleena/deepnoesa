@@ -60,6 +60,7 @@ a.button {
 .login_callout {
     font-size: 20px;
     margin: 0;
+    font-weight: 900;
 }
 
 a.label-link:hover, .login_callout a:hover {

@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="./css/black_white.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400&display=swap" rel="stylesheet">
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
         
         
@@ -585,7 +587,7 @@
         <i class="fas fa-user-alt" aria-hidden="true"></i>
                             Username or email address
                           </label>
-                          <input type="text" name="login" id="login_field" class="form-control input-block" autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus" style="
+                          <input type="text" name="login" id="login_field" class="input-block" autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus" style="
             /* height: 50px; */
         ">
                         
@@ -613,17 +615,17 @@
             font-weight: 900;
         ">Forgot password?</a>
                           </label>
-                          <input type="password" name="password" id="password" class="form-control form-control input-block" autocomplete="current-password" style="
+                          <input type="password" name="password" id="password" class="  input-block" autocomplete="current-password" style="
             /* height: 50px; */
         ">
-                          <input type="hidden" name="trusted_device" id="trusted_device" class="form-control">
+                          <input type="hidden" name="trusted_device" id="trusted_device" class="">
                           <input type="hidden" class="js-webauthn-support" name="webauthn-support" value="supported">
                           <input type="hidden" class="js-webauthn-iuvpaa-support" name="webauthn-iuvpaa-support" value="unsupported">
-                          <input type="hidden" name="return_to" id="return_to" class="form-control">
-                          <input type="hidden" name="allow_signup" id="allow_signup" class="form-control">
-                          <input type="hidden" name="client_id" id="client_id" class="form-control">
-                          <input type="hidden" name="integration" id="integration" class="form-control">
-                          <input type="text" name="required_field_3fff" hidden="hidden" class="form-control"><input type="hidden" name="timestamp" value="1609752462842" class="form-control"><input type="hidden" name="timestamp_secret" value="4df80769eb848d4feb6b5f9a9f318f949c07987054243b6d3cc6c926d1177fc8" class="form-control">
+                          <input type="hidden" name="return_to" id="return_to" class="">
+                          <input type="hidden" name="allow_signup" id="allow_signup" class="">
+                          <input type="hidden" name="client_id" id="client_id" class="">
+                          <input type="hidden" name="integration" id="integration" class="">
+                          <input type="text" name="required_field_3fff" hidden="hidden" class=""><input type="hidden" name="timestamp" value="1609752462842" class=""><input type="hidden" name="timestamp_secret" value="4df80769eb848d4feb6b5f9a9f318f949c07987054243b6d3cc6c926d1177fc8" class="">
                         
                          <!-- <input type="submit" name="commit" value="Sign in" class="btn btn-primary btn-block" data-disable-with="Signing inÃ¢â‚¬Â¦" style="
             color: #78277e;
@@ -649,41 +651,68 @@
         </div>
 
         <footer class="footer mt-6">
-          <div class="container-xl p-responsive">
+          <div class="">
             <div class="footer_b1">
-            <div class="adv_legend">AI-Tools for<br> your Business</div>
+            <div class="adv_legend">AI-Tools 
+              
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              viewBox="0 0 204.5 197.7" enable-background="new 0 0 204.5 197.7" xml:space="preserve" style="width: 58px;position: relative;">
+  
+            <g id="Layer_1">
+              <polygon fill="#FFFFFF" points="9.3,137.9 9.3,53.7 85.3,9.6 161.3,53.7 161.3,137.9 85.3,180.6 	"/>
+              <path fill="#18753c" d="M28.4,124.8V66.2c0-2,1-3.8,2.7-4.8l51.2-30.7c1.8-1.1,4-1.1,5.8,0l51.1,30.7c1.7,1,2.7,2.9,2.7,4.8v58.6
+                c0,2-1.1,3.9-2.8,4.9l-51.2,29.7c-1.7,1-3.9,1-5.7,0l-51.2-29.7C29.5,128.6,28.4,126.8,28.4,124.8z"/>
+              <path fill="none" stroke="#18753c" stroke-width="17" stroke-miterlimit="10" d="M9.5,130.4V60.8c0-5.2,2.8-10.1,7.3-12.8
+                l60.9-36.5c4.7-2.8,10.6-2.8,15.3,0L153.8,48c4.5,2.7,7.2,7.6,7.2,12.8v69.7c0,5.3-2.8,10.2-7.4,12.9l-60.8,35.3
+                c-4.6,2.7-10.3,2.7-15,0l-60.8-35.3C12.3,140.7,9.5,135.8,9.5,130.4z"/>
+              <path fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" d="M92.2,64.5c0.1-0.8,0.8-2.5,2.1-3.4c1-0.7,2.2-1.7,4.7-1.2
+                c2.3,0.4,3.7,1.6,4.5,2.6c0.1,0.1,0.1,0.2,0.2,0.4c0.4,0.9,0.5,1.9,0.4,2.9l-0.9,5.8c-0.2,1.4,0.3,2.8,1.4,3.5
+                c0.1,0.1,0.3,0.2,0.4,0.2c0.1,0,0.3,0,0.4,0c1.6-0.1,2.9-1.4,3.2-3c0.2-1.5,0.7-4.4,1-5.8c0.3-2,0-2.9-0.3-4.3
+                c-0.3-1.2-1-2.8-2-3.9c-2.4-2.4-5.2-3.8-7.2-4.2c-2.1-0.3-5.8,0.2-8.2,1.6C89.7,57,88.7,59,88,60.3c-0.7,1.3-1.2,2.9-1.4,4.4
+                l-10.1,61.6L92.2,64.5z"/>
+              <path fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" d="M76.7,125.7c-0.1,0.8-0.8,2.5-2.1,3.4c-1,0.7-2.2,1.7-4.7,1.2
+                c-2.3-0.4-3.7-1.6-4.5-2.6c-0.1-0.1-0.1-0.2-0.2-0.4c-0.4-0.9-0.5-1.9-0.4-2.9l0.9-5.8c0.2-1.4-0.3-2.8-1.4-3.5
+                c-0.1-0.1-0.3-0.2-0.4-0.2c-0.1,0-0.3,0-0.4,0c-1.6,0.1-2.9,1.4-3.2,3c-0.2,1.5-0.7,4.4-1,5.8c-0.3,2,0,2.9,0.3,4.3
+                c0.3,1.2,1,2.8,2,3.9c2.4,2.4,5.2,3.8,7.2,4.2c2.1,0.3,5.8-0.2,8.2-1.6c2.1-1.2,3.1-3.3,3.9-4.6c0.7-1.3,1.2-2.9,1.4-4.4l10.1-61.6
+                L76.7,125.7z"/>
+              <path fill="#a1a1a1" d="M155.2,195.9l47.6-49.8c2.2-2.3,2.2-6-0.1-8.3l-20.2-20.4c-1.1-1.1-2.7-1.8-4.2-1.8h-54.7
+                c-1.6,0-3.2,0.7-4.3,1.8l-20.4,21.2c-2.2,2.3-2.2,6,0,8.3l47.7,49C149,198.3,152.9,198.3,155.2,195.9z"/>
+              <path fill="#18753c" d="M150.8,131.5v44.7c0,1.8,2.2,2.8,3.5,1.5l33.6-33c1.3-1.3,1.3-3.5-0.1-4.8l-11.6-10.9
+                c-0.6-0.6-1.4-0.9-2.3-0.9h-19.9C152.3,128.2,150.8,129.7,150.8,131.5z"/>
+            </g>
+            </svg>
+            for
+              <br> your Business</div>
             <div class="footer_logo">
                 <a href="/" class="text-gray-dark">
                   <img src="./images/footer_logo.svg" id="logo_footer">
-                  <p class="footer_logo_text">&copy; 2021 <a href="#">NEURO<span style="color: #ff00a5;">A</span>ESTHETICS</a></p>
+                  <p class="footer_logo_text">&copy; 2021 <a href="#">DEEP<span style="color: #b537e4;">N</span>OESA</a></p>
                 </a>
                 <form action="" method="" class="webdesigntuts-workshop">		    
-                    <input  placeholder="Get discount 30%" readonly>		    	
+                    <input  placeholder="Download API" readonly>		    	
                 </form>
               </div>
                 <ul class="flex_clmn">
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">H-Incubator</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Rese<span style="color:#ff00a5;">a</span>rches</a></li>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./pricing.html">Pricing</a></li>
+                        <li><a href="./team.html">Team</a></li>
+                        <li><a href="./faq.html">FAQ</a></li>
+                        <li><a href="./contacts.html">Contacts</a></li>
+                        
                 </ul>
                 <ul class="flex_clmn">
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">H-Incubator</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Rese<span style="color:#ff00a5;">a</span>rches</a></li>
+                        <li><a href="./researches.html">Rese<span style="color:#ff00a5;">a</span>rches</a></li>
+                        <li><a href="./sign_up.html">Sign Up</a></li>
+                        <li><a href="./sign_in.html">Sign In</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#plasma_control">Plasma control</a></li>
                 </ul>
                 <ul class="flex_clmn">
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">H-Incubator</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Rese<span style="color:#ff00a5;">a</span>rches</a></li>
+                        <li><a href="#neurogeometry">Neurogeometry</a></li>
+                        <li><a href="#neurophenomenology">Neurophenomenology</a></li>
+                        <li><a href="#neuroaesthetics">Neuroaesthetics</a></li>
+                        <li><a href="#c_commerce">C-commerce</a></li>
+                        <li><a href="#manufactoring">Management</a></li>
                 </ul>
             </div>
           </div>
@@ -695,9 +724,9 @@
                 </li>
               </ul>
               <ul class="list-style-none d-flex flex-wrap text-gray flex_row">
-                <li class="mr-3"><a href="/site/terms">Terms</a></li>
-                <li class="mr-3"><a href="/site/privacy">Privacy</a></li>
-                <li class="mr-3"><a href="/site-map">Site Map</a></li>
+                <li class="mr-3"><a href="./terms.html">Terms</a></li>
+                <li class="mr-3"><a href="./privacy.html">Privacy</a></li>
+                <li class="mr-3"><a href="./site_map.html">Site Map</a></li>
               </ul>
             </div>
           </div>
@@ -815,7 +844,6 @@
                 document.querySelector("#preloader").style.display = "none";
                 document.querySelector("#bm").style.display = "block";
                 document.querySelector(".menu").style.display = "flex";
-                document.querySelector(".arrow_wrapper").style.display = "block";
                 document.body.style.overflow = "inherit";
                 document.body.style.overflowX = "hidden";
             }

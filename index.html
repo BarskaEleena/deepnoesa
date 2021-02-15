@@ -3795,122 +3795,11 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
   <!-- three js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js"
     integrity="sha256-3mBEX8I0uMLF7+AUjJeTCelosuorzYpqwBMBPDTyQqY=" crossorigin="anonymous"></script>
-  <!-- hover-effect js -->
   <script src="https://raw.githubusercontent.com/codicts/Fashion-Landing-Page/master/hover-effect.umd.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
 
-        <script>
-
-          Splitting();
-
-          !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("three"),require("gsap/TweenMax")):"function"==typeof define&&define.amd?define(["three","gsap/TweenMax"],t):e.hoverEffect=t(e.THREE,e.TweenMax)}(this,function(e,t){return t=t&&t.hasOwnProperty("default")?t.default:t,function(n){function i(){for(var e=arguments,t=0;t<arguments.length;t++)if(void 0!==e[t])return e[t]}console.log("%c Hover effect by Robin Delaporte: https://github.com/robin-dela/hover-effect ","color: #bada55; font-size: 0.8rem");var r=n.parent,o=n.displacementImage,a=n.image1,s=n.image2,f=i(n.imagesRatio,1),d=i(n.intensity1,n.intensity,1),l=i(n.intensity2,n.intensity,1),u=i(n.angle,Math.PI/4),v=i(n.angle1,u),m=i(n.angle2,3*-u),c=i(n.speedIn,n.speed,4.6),p=i(n.speedOut,n.speed,4.2),g=i(n.hover,!0),h=i(n.easing,Expo.easeOut),y=i(n.video,!1);if(r)if(a&&s&&o){var x=new e.Scene,F=new e.OrthographicCamera(r.offsetWidth/-2,r.offsetWidth/2,r.offsetHeight/2,r.offsetHeight/-2,1,1e3);F.position.z=1;var w=new e.WebGLRenderer({antialias:!1,alpha:!0});w.setPixelRatio(2),w.setClearColor(16777215,0),w.setSize(r.offsetWidth,r.offsetHeight),r.appendChild(w.domElement);var L=function(){w.render(x,F)},H=new e.TextureLoader;H.crossOrigin="";var E,W,V=H.load(o,L);if(V.magFilter=V.minFilter=e.LinearFilter,y){var M=function(){requestAnimationFrame(M),w.render(x,F)};M(),(y=document.createElement("video")).autoplay=!0,y.loop=!0,y.src=a,y.load();var P=document.createElement("video");P.autoplay=!0,P.loop=!0,P.src=s,P.load();var R=new e.VideoTexture(y),T=new e.VideoTexture(P);R.magFilter=T.magFilter=e.LinearFilter,R.minFilter=T.minFilter=e.LinearFilter,P.addEventListener("loadeddata",function(){P.play(),(T=new e.VideoTexture(P)).magFilter=e.LinearFilter,T.minFilter=e.LinearFilter,C.uniforms.texture2.value=T},!1),y.addEventListener("loadeddata",function(){y.play(),(R=new e.VideoTexture(y)).magFilter=e.LinearFilter,R.minFilter=e.LinearFilter,C.uniforms.texture1.value=R},!1)}else R=H.load(a,L),T=H.load(s,L),R.magFilter=T.magFilter=e.LinearFilter,R.minFilter=T.minFilter=e.LinearFilter;var U=f;r.offsetHeight/r.offsetWidth<U?(E=1,W=r.offsetHeight/r.offsetWidth/U):(E=r.offsetWidth/r.offsetHeight*U,W=1);var C=new e.ShaderMaterial({uniforms:{intensity1:{type:"f",value:d},intensity2:{type:"f",value:l},dispFactor:{type:"f",value:0},angle1:{type:"f",value:v},angle2:{type:"f",value:m},texture1:{type:"t",value:R},texture2:{type:"t",value:T},disp:{type:"t",value:V},res:{type:"vec4",value:new e.Vector4(r.offsetWidth,r.offsetHeight,E,W)},dpr:{type:"f",value:window.devicePixelRatio}},vertexShader:"\nvarying vec2 vUv;\nvoid main() {\n  vUv = uv;\n  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}\n",fragmentShader:"\nvarying vec2 vUv;\n\nuniform float dispFactor;\nuniform float dpr;\nuniform sampler2D disp;\n\nuniform sampler2D texture1;\nuniform sampler2D texture2;\nuniform float angle1;\nuniform float angle2;\nuniform float intensity1;\nuniform float intensity2;\nuniform vec4 res;\nuniform vec2 parent;\n\nmat2 getRotM(float angle) {\n  float s = sin(angle);\n  float c = cos(angle);\n  return mat2(c, -s, s, c);\n}\n\nvoid main() {\n  vec4 disp = texture2D(disp, vUv);\n  vec2 dispVec = vec2(disp.r, disp.g);\n\n  vec2 uv = 0.5 * gl_FragCoord.xy / (res.xy) ;\n  vec2 myUV = (uv - vec2(0.5))*res.zw + vec2(0.5);\n\n\n  vec2 distortedPosition1 = myUV + getRotM(angle1) * dispVec * intensity1 * dispFactor;\n  vec2 distortedPosition2 = myUV + getRotM(angle2) * dispVec * intensity2 * (1.0 - dispFactor);\n  vec4 _texture1 = texture2D(texture1, distortedPosition1);\n  vec4 _texture2 = texture2D(texture2, distortedPosition2);\n  gl_FragColor = mix(_texture1, _texture2, dispFactor);\n}\n",transparent:!0,opacity:1}),b=new e.PlaneBufferGeometry(r.offsetWidth,r.offsetHeight,1),D=new e.Mesh(b,C);x.add(D),g&&(r.addEventListener("focus",_)),window.addEventListener("resize",function(t){r.offsetHeight/r.offsetWidth<U?(E=1,W=r.offsetHeight/r.offsetWidth/U):(E=r.offsetWidth/r.offsetHeight*U,W=1),D.material.uniforms.res.value=new e.Vector4(r.offsetWidth,r.offsetHeight,E,W),w.setSize(r.offsetWidth,r.offsetHeight),L()}),this.next=_,this.previous=z}else console.warn("One or more images are missing");else console.warn("Parent missing");function _(){t.to(C.uniforms.dispFactor,c,{value:1,ease:h,onUpdate:L,onComplete:L})}
-          
-          var done = 0;
-          invert_block = document.querySelector('.distotrion');
-
-          document.addEventListener('scroll', function () {
-              if (isInViewport(invert_block) && (done == 0)) {
-                done = 1;
-                setTimeout(function(){
-                  _();
-                  setTimeout(function(){
-                    z();
-                  }, 4000);  
-                }, 1000);
-                
-              } else if (isInViewport(invert_block) == false) {
-                done = 0;
-              } else {
-                done = done;
-              }
-          });
-
-          function z(){t.to(C.uniforms.dispFactor,p,{value:0,ease:h,onUpdate:L,onComplete:L})}}});
-
-          new hoverEffect({
-                parent: document.querySelector('.distortion'),
-                intensity: 0.6,
-                image1: 'https://barskaeleena.github.io/deepnoesa/images/husserl_background.png',
-                image2: 'https://barskaeleena.github.io/deepnoesa/images/husserl_background_2.png',
-                displacementImage: 'https://raw.githubusercontent.com/codicts/Fashion-Landing-Page/master/images/diss.png',
-                imagesRatio: 0.5,
-              })
-
-              TweenMax.from(".distortion", 1.5, {
-                delay: 0,
-                opacity: 0,
-                y: "20",
-                ease: Expo.easeInOut
-              });
-
-
-
-          //var svg = document.querySelector(".sp svg path");
-          //svg.classList.add("linear_gradient");
-          //document.querySelector('linearGradient').style.display = "initial";
-          setTimeout(function(){
-            document.querySelector("body").classList.add("anim");
-            /*gsap.to("html", {
-              "--shadow-color": "#FF9E9E", 
-              duration: 201,
-              yoyo: true, 
-              repeat: 20
-            });
-            
-            gsap.to("html", {
-              "--hover-color-1": "#3f3c3c", 
-              duration: 201,
-              yoyo: true, 
-              repeat: 20
-            });
-
-            gsap.to("html", {
-              "--hover-color-2": "#78277e", 
-              duration: 201,
-              yoyo: true, 
-              repeat: 20
-            });
-            */
-          }, 20000);
-
-          setTimeout(function(){
-            var svg = document.querySelector(".preloader_shining");
-            svg.classList.add("anim");
-          }, 2000);
-
-
-          function sizeSpacer(spacer) {
-              spacer.style.height = 0;
-              var container = spacer.parentNode;
-              var img = spacer.nextElementSibling || spacer.nextSibling;
-              var lastContentNode = container.children[container.children.length - 1];
-              var h = Math.max(0, container.clientHeight - img.clientHeight);
-              spacer.style.height = h + "px";
-              while (h > 0 && img.getBoundingClientRect().bottom > lastContentNode.getBoundingClientRect().bottom) {
-                  spacer.style.height = --h + "px";
-              }
-              if (lastContentNode.getBoundingClientRect().bottom > img.getBoundingClientRect().bottom) {
-                  spacer.style.height = ++h + "px";
-              }
-          }
-
-          onload = onresize = function() {
-              sizeSpacer(document.getElementById("spacer"));
-          };
-
-          /*document.querySelectorAll(".more_info").onclick = function more_info(){
-            document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
-            document.querySelector(".more_info_window").style.display = "block";
-            document.getElementById("bm").classList.add("animate");
-            alert("h");
-          }*/
-
-          
-
-          
-          
-        </script>
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js"></script>
@@ -3919,127 +3808,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         <script src="./js/babel.min.js"></script>
         <script src="./js/arctext.js"></script>
 
-        <script>
-          function isInViewport(el) {
-              const rect = el.getBoundingClientRect();
-              return (
-                  rect.top >= 0 &&
-                  rect.left >= 0 &&
-                  rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                  rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-
-              );
-          }
-
-          $.fn.isInViewport_ = function() {
-            var elementTop = $(this).offset().top;
-            var elementBottom = elementTop + $(this).outerHeight();
-
-            var viewportTop = $(window).scrollTop();
-            var viewportBottom = viewportTop + $(window).height();
-
-            return elementBottom > viewportTop && elementTop < viewportBottom;
-          };
-
-          $(window).on('resize scroll', function() {
-            if ($('#plasma_control').isInViewport_()) {
-              $("a[href$='#plasma_control']").addClass("underline");
-
-              $("a[href$='#neurogeometry']").removeClass("underline");
-              $("a[href$='#neurophenomenology']").removeClass("underline");
-              $("a[href$='#neuroaesthetics']").removeClass("underline");
-              $("a[href$='#c_commerce']").removeClass("underline");
-              $("a[href$='#manufactoring']").removeClass("underline");
-            } else if ($('#neurogeometry').isInViewport_()) {
-              $("a[href$='#neurogeometry']").addClass("underline");
-
-              $("a[href$='#plasma_control']").removeClass("underline");
-              $("a[href$='#neurophenomenology']").removeClass("underline");
-              $("a[href$='#neuroaesthetics']").removeClass("underline");
-              $("a[href$='#c_commerce']").removeClass("underline");
-              $("a[href$='#manufactoring']").removeClass("underline");
-            } else if ($('#neurophenomenology').isInViewport_()) {
-              $("a[href$='#neurophenomenology']").addClass("underline");
-
-              $("a[href$='#plasma_control']").removeClass("underline");
-              $("a[href$='#neurogeometry']").removeClass("underline");
-              $("a[href$='#neuroaesthetics']").removeClass("underline");
-              $("a[href$='#c_commerce']").removeClass("underline");
-              $("a[href$='#manufactoring']").removeClass("underline");
-            } else if ($('#neuroaesthetics').isInViewport_()) {
-              $("a[href$='#neuroaesthetics']").addClass("underline");
-
-              $("a[href$='#plasma_control']").removeClass("underline");
-              $("a[href$='#neurogeometry']").removeClass("underline");
-              $("a[href$='#neurophenomenology']").removeClass("underline");
-              $("a[href$='#c_commerce']").removeClass("underline");
-              $("a[href$='#manufactoring']").removeClass("underline");
-            } else if ($('#c_commerce').isInViewport_()) {
-              $("a[href$='#c_commerce']").addClass("underline");
-
-              $("a[href$='#plasma_control']").removeClass("underline");
-              $("a[href$='#neurogeometry']").removeClass("underline");
-              $("a[href$='#neurophenomenology']").removeClass("underline");
-              $("a[href$='#neuroaesthetics']").removeClass("underline");
-              $("a[href$='#manufactoring']").removeClass("underline");
-            } else if ($('#manufactoring').isInViewport_()) {
-              $("a[href$='#manufactoring']").addClass("underline");
-
-              $("a[href$='#plasma_control']").removeClass("underline");
-              $("a[href$='#neurogeometry']").removeClass("underline");
-              $("a[href$='#neurophenomenology']").removeClass("underline");
-              $("a[href$='#neuroaesthetics']").removeClass("underline");
-              $("a[href$='#c_commerce']").removeClass("underline");
-            }
-        });
-
-          const main_block = document.querySelector('.main_text');
-          const invert_block = document.querySelector('.invert_wrap');
-          const husserl_button = document.querySelector('.miracle_block .cube');
-          const text_animation = document.querySelector('.headline--yell');
- 
-
-          document.addEventListener('scroll', function () {
-              if (isInViewport(invert_block)) {
-                invert_block.classList.add("animate");
-                $(".distortion").mouseenter();
-
-                document.querySelector(".chatbot_wrapper").style.display = "block";
-              }
-
-              if (isInViewport(main_block)) {
-                if (document.querySelector(".chatbot_wrapper").style.display == "block") {
-                  document.querySelector(".chatbot_wrapper").style.display = "none";
-                }
-              }
-
-              if (isInViewport(husserl_button)) {
-                husserl_button.classList.add("animate");
-              }
-
-              if (isInViewport(text_animation)) {
-                text_animation.classList.add("animate");
-              }
-
-              var header = document.getElementById("products_menu");
-              var sticky = header.offsetTop;
-
-              if (window.pageYOffset > 2400) {
-                header.classList.add("sticky");
-                document.querySelector("#scroll_menu").style.display = "block";
-              } else {
-                header.classList.remove("sticky");
-                document.querySelector("#scroll_menu").style.display = "none";
-                $("a[href$='#plasma_control']").removeClass("underline");
-              } 
-          });
-
-          /*document.querySelectorAll('.close').addEventListener("click", function() {
-            document.querySelector("#bm").classList.remove("animate");
-            document.querySelector(".more_info_window").style.display = "none";
-          });*/
-
-        </script>
 
         <script type="text/babel">
             const DEBUG = false;
@@ -4124,151 +3892,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
         <script>
           $(document).ready(function() {
-              $(".more_info").click(function() {
-                document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
-                document.querySelector(".chatbot_wrapper").style.width = "100%";
-                document.querySelector(".chatbot_wrapper").style.height = "100%";
-                document.querySelector(".more_info_window").style.display = "block";
-                document.getElementById("bm").classList.add("animate");
-              });
-
-              $(".explore").click(function() {
-                document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
-                document.querySelector(".chatbot_wrapper").style.width = "100%";
-                document.querySelector(".chatbot_wrapper").style.height = "100%";
-                document.querySelector(".more_info_window").style.display = "block";
-                document.getElementById("bm").classList.add("animate");
-              });
-
               
-              $(".more_info_window .close").click(function() {
-                document.querySelector(".chatbot_wrapper").style.background = "rgb(0 0 0 / 0%)";
-                document.querySelector(".chatbot_wrapper").style.width = "unset";
-                document.querySelector(".chatbot_wrapper").style.height = "unset";
-                document.querySelector(".more_info_window").style.display = "none";
-                document.getElementById("bm").classList.remove("animate");
-              });
-
-              
-              $("#scroll_menu").click(function() {
-                if (document.querySelector("#second_menu").style.display == "none") {
-                  document.querySelector("#second_menu").style.display = "flex";
-                } else {
-                  document.querySelector("#second_menu").style.display = "none";
-                }
-                
-              });
-
-              function insertAfter(referenceNode, newNode) {
-                referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-              }
-
-
-              $(".dialog_header .close").click(function() {
-                document.querySelector(".dialog_main").style.display = "none";
-                  insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
-              });
-
-              var first_mess = 0;
-
-              $("#bm").click(function() {
-                if ( document.querySelector(".more_info_window").style.display == "block") {
-                  document.querySelector(".chatbot_wrapper").style.background = "rgb(0 0 0 / 0%)";
-                  document.querySelector(".chatbot_wrapper").style.width = "unset";
-                  document.querySelector(".chatbot_wrapper").style.height = "unset";
-                  document.querySelector(".more_info_window").style.display = "none";
-                  document.getElementById("bm").classList.remove("animate");
-
-                  sleep(1000);
-                } 
-
-
-                if (document.querySelector(".dialog_main").style.display == "flex") {
-                  document.querySelector(".dialog_main").style.display = "none";
-                  insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
-
-                } else {
-                  insertAfter(document.querySelector(".dialog_block") , document.querySelector("#bm"));
-                  document.querySelector(".dialog_main").style.display = "flex";
-
-                  if (first_mess == 0) {
-                    var botAnswer = document.createElement("div");
-                    botAnswer.innerHTML = "<p>Hi!</p>"; 
-                    botAnswer.classList.add("message_bot");
-                    document.querySelector(".dialog__").append(botAnswer);
-
-                    document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-
-                    setTimeout(function(){
-                      var botAnswer = document.createElement("div");
-                      botAnswer.innerHTML = "<p>My name is Barska.</p>"; 
-                      botAnswer.classList.add("message_bot");
-                      document.querySelector(".dialog__").append(botAnswer);
-
-                      document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-                    }, 1000);
-
-                    setTimeout(function(){
-                      var botAnswer = document.createElement("div");
-                      botAnswer.innerHTML = "<p>Write what interests you and I will answer any of your questions about Smart Neural IE.</p>"; 
-                      botAnswer.classList.add("message_bot");
-                      document.querySelector(".dialog__").append(botAnswer);
-
-                      document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-                    }, 2400);
-
-                    first_mess = 1;
-                  }
-                }
-              });
-
-
-              $(".send").click(function() {
-                var message = document.querySelector('.input_block input').value;
-                document.querySelector('.input_block input').value = "";
-                var newDiv = document.createElement("div");
-                newDiv.innerHTML = "<p>"+message+"</p>"; 
-                newDiv.classList.add("message_client");
-                document.querySelector(".dialog__").append(newDiv);
-
-                document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-
-                setTimeout(function(){
-                  var botAnswer = document.createElement("div");
-                  botAnswer.innerHTML = "<p>Thanks for your question! It is very important for me. </p>"; 
-                  botAnswer.classList.add("message_bot");
-                  document.querySelector(".dialog__").append(botAnswer);
-
-                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-                }, 2000);
-
-                setTimeout(function(){
-                  var botAnswer = document.createElement("div");
-                  botAnswer.innerHTML = "<p>I am now learning based on Smart Neural IE, my intellectual skills are increasing.</p>"; 
-                  botAnswer.classList.add("message_bot");
-                  document.querySelector(".dialog__").append(botAnswer);
-
-                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-                }, 4000);
-
-                setTimeout(function(){
-                  var botAnswer = document.createElement("div");
-                  botAnswer.innerHTML = "<p>The official launch of our website is scheduled for July 1, 2021. If you want to chat with me in full format and see all the power of Smart IE for linguistic processing - come to us on July 1, 2021 and I will be glad to talk with you on any topic and become your best bot friend forever.</p>"; 
-                  botAnswer.classList.add("message_bot");
-                  document.querySelector(".dialog__").append(botAnswer);
-
-                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
-                }, 5000);
-              });
-
-              
-              
-              
-              
-                
-          });
-
-
             Element.prototype.remove = function() {
                 this.parentElement.removeChild(this);
             }
@@ -4453,6 +4077,382 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
         </script>
         
+
+        <script>
+
+Splitting();
+
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("three"),require("gsap/TweenMax")):"function"==typeof define&&define.amd?define(["three","gsap/TweenMax"],t):e.hoverEffect=t(e.THREE,e.TweenMax)}(this,function(e,t){return t=t&&t.hasOwnProperty("default")?t.default:t,function(n){function i(){for(var e=arguments,t=0;t<arguments.length;t++)if(void 0!==e[t])return e[t]}console.log("%c Hover effect by Robin Delaporte: https://github.com/robin-dela/hover-effect ","color: #bada55; font-size: 0.8rem");var r=n.parent,o=n.displacementImage,a=n.image1,s=n.image2,f=i(n.imagesRatio,1),d=i(n.intensity1,n.intensity,1),l=i(n.intensity2,n.intensity,1),u=i(n.angle,Math.PI/4),v=i(n.angle1,u),m=i(n.angle2,3*-u),c=i(n.speedIn,n.speed,4.6),p=i(n.speedOut,n.speed,4.2),g=i(n.hover,!0),h=i(n.easing,Expo.easeOut),y=i(n.video,!1);if(r)if(a&&s&&o){var x=new e.Scene,F=new e.OrthographicCamera(r.offsetWidth/-2,r.offsetWidth/2,r.offsetHeight/2,r.offsetHeight/-2,1,1e3);F.position.z=1;var w=new e.WebGLRenderer({antialias:!1,alpha:!0});w.setPixelRatio(2),w.setClearColor(16777215,0),w.setSize(r.offsetWidth,r.offsetHeight),r.appendChild(w.domElement);var L=function(){w.render(x,F)},H=new e.TextureLoader;H.crossOrigin="";var E,W,V=H.load(o,L);if(V.magFilter=V.minFilter=e.LinearFilter,y){var M=function(){requestAnimationFrame(M),w.render(x,F)};M(),(y=document.createElement("video")).autoplay=!0,y.loop=!0,y.src=a,y.load();var P=document.createElement("video");P.autoplay=!0,P.loop=!0,P.src=s,P.load();var R=new e.VideoTexture(y),T=new e.VideoTexture(P);R.magFilter=T.magFilter=e.LinearFilter,R.minFilter=T.minFilter=e.LinearFilter,P.addEventListener("loadeddata",function(){P.play(),(T=new e.VideoTexture(P)).magFilter=e.LinearFilter,T.minFilter=e.LinearFilter,C.uniforms.texture2.value=T},!1),y.addEventListener("loadeddata",function(){y.play(),(R=new e.VideoTexture(y)).magFilter=e.LinearFilter,R.minFilter=e.LinearFilter,C.uniforms.texture1.value=R},!1)}else R=H.load(a,L),T=H.load(s,L),R.magFilter=T.magFilter=e.LinearFilter,R.minFilter=T.minFilter=e.LinearFilter;var U=f;r.offsetHeight/r.offsetWidth<U?(E=1,W=r.offsetHeight/r.offsetWidth/U):(E=r.offsetWidth/r.offsetHeight*U,W=1);var C=new e.ShaderMaterial({uniforms:{intensity1:{type:"f",value:d},intensity2:{type:"f",value:l},dispFactor:{type:"f",value:0},angle1:{type:"f",value:v},angle2:{type:"f",value:m},texture1:{type:"t",value:R},texture2:{type:"t",value:T},disp:{type:"t",value:V},res:{type:"vec4",value:new e.Vector4(r.offsetWidth,r.offsetHeight,E,W)},dpr:{type:"f",value:window.devicePixelRatio}},vertexShader:"\nvarying vec2 vUv;\nvoid main() {\n  vUv = uv;\n  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}\n",fragmentShader:"\nvarying vec2 vUv;\n\nuniform float dispFactor;\nuniform float dpr;\nuniform sampler2D disp;\n\nuniform sampler2D texture1;\nuniform sampler2D texture2;\nuniform float angle1;\nuniform float angle2;\nuniform float intensity1;\nuniform float intensity2;\nuniform vec4 res;\nuniform vec2 parent;\n\nmat2 getRotM(float angle) {\n  float s = sin(angle);\n  float c = cos(angle);\n  return mat2(c, -s, s, c);\n}\n\nvoid main() {\n  vec4 disp = texture2D(disp, vUv);\n  vec2 dispVec = vec2(disp.r, disp.g);\n\n  vec2 uv = 0.5 * gl_FragCoord.xy / (res.xy) ;\n  vec2 myUV = (uv - vec2(0.5))*res.zw + vec2(0.5);\n\n\n  vec2 distortedPosition1 = myUV + getRotM(angle1) * dispVec * intensity1 * dispFactor;\n  vec2 distortedPosition2 = myUV + getRotM(angle2) * dispVec * intensity2 * (1.0 - dispFactor);\n  vec4 _texture1 = texture2D(texture1, distortedPosition1);\n  vec4 _texture2 = texture2D(texture2, distortedPosition2);\n  gl_FragColor = mix(_texture1, _texture2, dispFactor);\n}\n",transparent:!0,opacity:1}),b=new e.PlaneBufferGeometry(r.offsetWidth,r.offsetHeight,1),D=new e.Mesh(b,C);x.add(D),g&&(r.addEventListener("focus",_)),window.addEventListener("resize",function(t){r.offsetHeight/r.offsetWidth<U?(E=1,W=r.offsetHeight/r.offsetWidth/U):(E=r.offsetWidth/r.offsetHeight*U,W=1),D.material.uniforms.res.value=new e.Vector4(r.offsetWidth,r.offsetHeight,E,W),w.setSize(r.offsetWidth,r.offsetHeight),L()}),this.next=_,this.previous=z}else console.warn("One or more images are missing");else console.warn("Parent missing");function _(){t.to(C.uniforms.dispFactor,c,{value:1,ease:h,onUpdate:L,onComplete:L})}
+
+var done = 0;
+invert_block = document.querySelector('.distotrion');
+
+document.addEventListener('scroll', function () {
+    if (isInViewport(invert_block) && (done == 0)) {
+      done = 1;
+      setTimeout(function(){
+        _();
+        setTimeout(function(){
+          z();
+        }, 4000);  
+      }, 1000);
+      
+    } else if (isInViewport(invert_block) == false) {
+      done = 0;
+    } else {
+      done = done;
+    }
+});
+
+function z(){t.to(C.uniforms.dispFactor,p,{value:0,ease:h,onUpdate:L,onComplete:L})}}});
+
+new hoverEffect({
+      parent: document.querySelector('.distortion'),
+      intensity: 0.6,
+      image1: 'https://barskaeleena.github.io/deepnoesa/images/husserl_background.png',
+      image2: 'https://barskaeleena.github.io/deepnoesa/images/husserl_background_2.png',
+      displacementImage: 'https://raw.githubusercontent.com/codicts/Fashion-Landing-Page/master/images/diss.png',
+      imagesRatio: 0.5,
+    })
+
+    TweenMax.from(".distortion", 1.5, {
+      delay: 0,
+      opacity: 0,
+      y: "20",
+      ease: Expo.easeInOut
+    });
+
+
+
+//var svg = document.querySelector(".sp svg path");
+//svg.classList.add("linear_gradient");
+//document.querySelector('linearGradient').style.display = "initial";
+setTimeout(function(){
+  document.querySelector("body").classList.add("anim");
+  /*gsap.to("html", {
+    "--shadow-color": "#FF9E9E", 
+    duration: 201,
+    yoyo: true, 
+    repeat: 20
+  });
+  
+  gsap.to("html", {
+    "--hover-color-1": "#3f3c3c", 
+    duration: 201,
+    yoyo: true, 
+    repeat: 20
+  });
+
+  gsap.to("html", {
+    "--hover-color-2": "#78277e", 
+    duration: 201,
+    yoyo: true, 
+    repeat: 20
+  });
+  */
+}, 20000);
+
+setTimeout(function(){
+  var svg = document.querySelector(".preloader_shining");
+  svg.classList.add("anim");
+}, 2000);
+
+
+function sizeSpacer(spacer) {
+    spacer.style.height = 0;
+    var container = spacer.parentNode;
+    var img = spacer.nextElementSibling || spacer.nextSibling;
+    var lastContentNode = container.children[container.children.length - 1];
+    var h = Math.max(0, container.clientHeight - img.clientHeight);
+    spacer.style.height = h + "px";
+    while (h > 0 && img.getBoundingClientRect().bottom > lastContentNode.getBoundingClientRect().bottom) {
+        spacer.style.height = --h + "px";
+    }
+    if (lastContentNode.getBoundingClientRect().bottom > img.getBoundingClientRect().bottom) {
+        spacer.style.height = ++h + "px";
+    }
+}
+
+onload = onresize = function() {
+    sizeSpacer(document.getElementById("spacer"));
+};
+
+/*document.querySelectorAll(".more_info").onclick = function more_info(){
+  document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
+  document.querySelector(".more_info_window").style.display = "block";
+  document.getElementById("bm").classList.add("animate");
+  alert("h");
+}*/
+
+
+
+
+
+</script>
+
+        <script>
+          function isInViewport(el) {
+              const rect = el.getBoundingClientRect();
+              return (
+                  rect.top >= 0 &&
+                  rect.left >= 0 &&
+                  rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                  rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+
+              );
+          }
+
+          $.fn.isInViewport_ = function() {
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).outerHeight();
+
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+
+            return elementBottom > viewportTop && elementTop < viewportBottom;
+          };
+
+          $(window).on('resize scroll', function() {
+            if ($('#plasma_control').isInViewport_()) {
+              $("a[href$='#plasma_control']").addClass("underline");
+
+              $("a[href$='#neurogeometry']").removeClass("underline");
+              $("a[href$='#neurophenomenology']").removeClass("underline");
+              $("a[href$='#neuroaesthetics']").removeClass("underline");
+              $("a[href$='#c_commerce']").removeClass("underline");
+              $("a[href$='#manufactoring']").removeClass("underline");
+            } else if ($('#neurogeometry').isInViewport_()) {
+              $("a[href$='#neurogeometry']").addClass("underline");
+
+              $("a[href$='#plasma_control']").removeClass("underline");
+              $("a[href$='#neurophenomenology']").removeClass("underline");
+              $("a[href$='#neuroaesthetics']").removeClass("underline");
+              $("a[href$='#c_commerce']").removeClass("underline");
+              $("a[href$='#manufactoring']").removeClass("underline");
+            } else if ($('#neurophenomenology').isInViewport_()) {
+              $("a[href$='#neurophenomenology']").addClass("underline");
+
+              $("a[href$='#plasma_control']").removeClass("underline");
+              $("a[href$='#neurogeometry']").removeClass("underline");
+              $("a[href$='#neuroaesthetics']").removeClass("underline");
+              $("a[href$='#c_commerce']").removeClass("underline");
+              $("a[href$='#manufactoring']").removeClass("underline");
+            } else if ($('#neuroaesthetics').isInViewport_()) {
+              $("a[href$='#neuroaesthetics']").addClass("underline");
+
+              $("a[href$='#plasma_control']").removeClass("underline");
+              $("a[href$='#neurogeometry']").removeClass("underline");
+              $("a[href$='#neurophenomenology']").removeClass("underline");
+              $("a[href$='#c_commerce']").removeClass("underline");
+              $("a[href$='#manufactoring']").removeClass("underline");
+            } else if ($('#c_commerce').isInViewport_()) {
+              $("a[href$='#c_commerce']").addClass("underline");
+
+              $("a[href$='#plasma_control']").removeClass("underline");
+              $("a[href$='#neurogeometry']").removeClass("underline");
+              $("a[href$='#neurophenomenology']").removeClass("underline");
+              $("a[href$='#neuroaesthetics']").removeClass("underline");
+              $("a[href$='#manufactoring']").removeClass("underline");
+            } else if ($('#manufactoring').isInViewport_()) {
+              $("a[href$='#manufactoring']").addClass("underline");
+
+              $("a[href$='#plasma_control']").removeClass("underline");
+              $("a[href$='#neurogeometry']").removeClass("underline");
+              $("a[href$='#neurophenomenology']").removeClass("underline");
+              $("a[href$='#neuroaesthetics']").removeClass("underline");
+              $("a[href$='#c_commerce']").removeClass("underline");
+            }
+        });
+
+          const main_block = document.querySelector('.main_text');
+          const invert_block = document.querySelector('.invert_wrap');
+          const husserl_button = document.querySelector('.miracle_block .cube');
+          const text_animation = document.querySelector('.headline--yell');
+ 
+
+          document.addEventListener('scroll', function () {
+              if (isInViewport(invert_block)) {
+                invert_block.classList.add("animate");
+                $(".distortion").mouseenter();
+
+                document.querySelector(".chatbot_wrapper").style.display = "block";
+              }
+
+              if (isInViewport(main_block)) {
+                if (document.querySelector(".chatbot_wrapper").style.display == "block") {
+                  document.querySelector(".chatbot_wrapper").style.display = "none";
+                }
+              }
+
+              if (isInViewport(husserl_button)) {
+                husserl_button.classList.add("animate");
+              }
+
+              if (isInViewport(text_animation)) {
+                text_animation.classList.add("animate");
+              }
+
+              var header = document.getElementById("products_menu");
+              var sticky = header.offsetTop;
+
+              if (window.pageYOffset > 2400) {
+                header.classList.add("sticky");
+                document.querySelector("#scroll_menu").style.display = "block";
+              } else {
+                header.classList.remove("sticky");
+                document.querySelector("#scroll_menu").style.display = "none";
+                $("a[href$='#plasma_control']").removeClass("underline");
+              } 
+          });
+
+          /*document.querySelectorAll('.close').addEventListener("click", function() {
+            document.querySelector("#bm").classList.remove("animate");
+            document.querySelector(".more_info_window").style.display = "none";
+          });*/
+
+          $(document).ready(function() {
+              $(".more_info").click(function() {
+                  document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
+                  document.querySelector(".chatbot_wrapper").style.width = "100%";
+                  document.querySelector(".chatbot_wrapper").style.height = "100%";
+                  document.querySelector(".more_info_window").style.display = "block";
+                  document.getElementById("bm").classList.add("animate");
+                });
+
+                $(".explore").click(function() {
+                  document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
+                  document.querySelector(".chatbot_wrapper").style.width = "100%";
+                  document.querySelector(".chatbot_wrapper").style.height = "100%";
+                  document.querySelector(".more_info_window").style.display = "block";
+                  document.getElementById("bm").classList.add("animate");
+                });
+
+                
+                $(".more_info_window .close").click(function() {
+                  document.querySelector(".chatbot_wrapper").style.background = "rgb(0 0 0 / 0%)";
+                  document.querySelector(".chatbot_wrapper").style.width = "unset";
+                  document.querySelector(".chatbot_wrapper").style.height = "unset";
+                  document.querySelector(".more_info_window").style.display = "none";
+                  document.getElementById("bm").classList.remove("animate");
+                });
+
+                
+                $("#scroll_menu").click(function() {
+                  if (document.querySelector("#second_menu").style.display == "none") {
+                    document.querySelector("#second_menu").style.display = "flex";
+                  } else {
+                    document.querySelector("#second_menu").style.display = "none";
+                  }
+                  
+                });
+
+                function insertAfter(referenceNode, newNode) {
+                  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+                }
+
+
+                $(".dialog_header .close").click(function() {
+                  document.querySelector(".dialog_main").style.display = "none";
+                    insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
+                });
+
+                var first_mess = 0;
+
+                $("#bm").click(function() {
+                  if ( document.querySelector(".more_info_window").style.display == "block") {
+                    document.querySelector(".chatbot_wrapper").style.background = "rgb(0 0 0 / 0%)";
+                    document.querySelector(".chatbot_wrapper").style.width = "unset";
+                    document.querySelector(".chatbot_wrapper").style.height = "unset";
+                    document.querySelector(".more_info_window").style.display = "none";
+                    document.getElementById("bm").classList.remove("animate");
+
+                    sleep(1000);
+                  } 
+
+
+                  if (document.querySelector(".dialog_main").style.display == "flex") {
+                    document.querySelector(".dialog_main").style.display = "none";
+                    insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
+
+                  } else {
+                    insertAfter(document.querySelector(".dialog_block") , document.querySelector("#bm"));
+                    document.querySelector(".dialog_main").style.display = "flex";
+
+                    if (first_mess == 0) {
+                      var botAnswer = document.createElement("div");
+                      botAnswer.innerHTML = "<p>Hi!</p>"; 
+                      botAnswer.classList.add("message_bot");
+                      document.querySelector(".dialog__").append(botAnswer);
+
+                      document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+
+                      setTimeout(function(){
+                        var botAnswer = document.createElement("div");
+                        botAnswer.innerHTML = "<p>My name is Barska.</p>"; 
+                        botAnswer.classList.add("message_bot");
+                        document.querySelector(".dialog__").append(botAnswer);
+
+                        document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                      }, 1000);
+
+                      setTimeout(function(){
+                        var botAnswer = document.createElement("div");
+                        botAnswer.innerHTML = "<p>Write what interests you and I will answer any of your questions about Smart Neural IE.</p>"; 
+                        botAnswer.classList.add("message_bot");
+                        document.querySelector(".dialog__").append(botAnswer);
+
+                        document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                      }, 2400);
+
+                      first_mess = 1;
+                    }
+                  }
+                });
+
+
+                $(".send").click(function() {
+                  var message = document.querySelector('.input_block input').value;
+                  document.querySelector('.input_block input').value = "";
+                  var newDiv = document.createElement("div");
+                  newDiv.innerHTML = "<p>"+message+"</p>"; 
+                  newDiv.classList.add("message_client");
+                  document.querySelector(".dialog__").append(newDiv);
+
+                  document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+
+                  setTimeout(function(){
+                    var botAnswer = document.createElement("div");
+                    botAnswer.innerHTML = "<p>Thanks for your question! It is very important for me. </p>"; 
+                    botAnswer.classList.add("message_bot");
+                    document.querySelector(".dialog__").append(botAnswer);
+
+                    document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                  }, 2000);
+
+                  setTimeout(function(){
+                    var botAnswer = document.createElement("div");
+                    botAnswer.innerHTML = "<p>I am now learning based on Smart Neural IE, my intellectual skills are increasing.</p>"; 
+                    botAnswer.classList.add("message_bot");
+                    document.querySelector(".dialog__").append(botAnswer);
+
+                    document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                  }, 4000);
+
+                  setTimeout(function(){
+                    var botAnswer = document.createElement("div");
+                    botAnswer.innerHTML = "<p>The official launch of our website is scheduled for July 1, 2021. If you want to chat with me in full format and see all the power of Smart IE for linguistic processing - come to us on July 1, 2021 and I will be glad to talk with you on any topic and become your best bot friend forever.</p>"; 
+                    botAnswer.classList.add("message_bot");
+                    document.querySelector(".dialog__").append(botAnswer);
+
+                    document.querySelector(".dialog__").scrollTop = document.querySelector(".dialog__").scrollHeight;
+                  }, 5000);
+                });
+            });
+          //});
+
+        </script>
+
+
         <script id="vertexShader" type="x-shader/x-vertex">
           attribute vec4 a_position;
           

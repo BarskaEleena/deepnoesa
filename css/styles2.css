@@ -165,16 +165,37 @@ body.anim #logo {
 }
 
 #products_menu.sticky {
-    background: white;
+    background: #808080d6;
     box-shadow: 0 2.76726px 2.21381px rgb(0 0 0 / 7%), 0 6.6501px 5.32008px rgb(0 0 0 / 4%), 
     0 12.5216px 10.0172px rgb(0 0 0 / 3%), 0 22.3363px 17.869px rgb(0 0 0 / 3%), 
     0 41.7776px 33.4221px rgb(0 0 0 / 2%), 0 100px 80px rgb(0 0 0 / 2%), 0 1px 0 0 rgb(4 13 33 / 10%);
     z-index: 9999999;
+    background: white;
 }
 
 #products_menu.sticky ul { 
-    margin-top: 20px;
+    padding-top: 12px;
     padding-bottom: 12px;
+    margin-top: 10px;
+}
+
+#products_menu.sticky #second_menu {
+    background: #808080d6;
+    width: 100%;
+    margin: 0;
+    justify-content: space-evenly;
+    
+}
+
+#products_menu.sticky #second_menu { 
+-webkit-background-clip: unset;
+-webkit-text-fill-color: unset;
+-webkit-box-decoration-break: unset;
+color: white;
+}
+
+#second_menu li {
+    margin: 0 50;
 }
 
 #products_menu a.underline {
@@ -2483,6 +2504,10 @@ html{
     border-radius: 12px;
 }
 
+.miracle_block .cube {
+    margin-left: -11px;
+}
+
 @keyframes animateBg {
     0% { background-position: 0% 100%; }
     100% { background-position: 0% 0%; }
@@ -3628,9 +3653,9 @@ ul.pb-5-fluid.right {
 }
 
 
-
-
-
+#second_menu ul li {
+    color: white;
+}
 
 
 
@@ -3661,4 +3686,9 @@ ul.pb-5-fluid.right {
 
 .more.home-git-log-center:after {
     height: 800px;
+  }
+
+  div .home-discussions-check-0,div  .home-discussions-check-1, div .home-discussions-check-2, div .home-discussions-check-3 {
+    top: 394px;
+    right: 15px;
   }

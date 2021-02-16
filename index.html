@@ -3,7 +3,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-        <title>Deep Noesa</title>
+        <title>Deep Noesa | SmartIE</title>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400&display=swap" rel="stylesheet">
@@ -12,6 +12,89 @@
         <link rel="stylesheet" href="./css/styles2.css">
         <script type="text/javascript" src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
         <link rel="stylesheet" href="./css/main_styles.css">
+
+        <script src="./js/babel.min.js" ></script>
+
+        <script type="text/babel">
+            const DEBUG = false;
+            const REPETITION_COUNT = 2;
+            const NUM_FRAMES = 328;
+
+            function generateFrames($canvas, count = 32) {
+              const { width, height } = $canvas;
+              const ctx = $canvas.getContext("2d");
+              const originalData = ctx.getImageData(0, 0, width, height);
+              const imageDatas = [...Array(count)].map(
+                (_,i) => ctx.createImageData(width, height)
+              );
+              
+              for (let x = 0; x < width; ++x) {
+                for (let y = 0; y < height; ++y) {
+                  for (let i = 0; i < REPETITION_COUNT; ++i) {
+                    const dataIndex = Math.floor(
+                      count * (Math.random() + 2 * x / width) / 3
+                    );
+                    const pixelIndex = (y * width + x) * 4;
+                    for (let offset = 0; offset < 4; ++offset) {
+                      imageDatas[dataIndex].data[pixelIndex + offset]
+                        = originalData.data[pixelIndex + offset];
+                    }
+                  }
+                }
+              }
+              
+              return imageDatas.map(data => {
+                const $c = $canvas.cloneNode(true);
+                $c.getContext("2d").putImageData(data, 0, 0);
+                return $c;
+              });
+            }
+
+            function replaceElementVisually($old, $new) {
+              const $parent = $old.offsetParent;
+              $new.style.top = `${$old.offsetTop}px`;
+              $new.style.left = `${$old.offsetLeft}px`;
+              $new.style.width = `${$old.offsetWidth}px`;
+              $new.style.height = `${$old.offsetHeight}px`;
+              $parent.appendChild($new);
+              $old.style.visibility = "hidden";
+            }
+
+            function disintegrate($elm) {
+              html2canvas($elm).then($canvas => {    
+                const $container = document.createElement("div");
+                $container.classList.add("disintegration-container");
+                
+                const $frames = generateFrames($canvas, NUM_FRAMES);
+                $frames.forEach(($frame, i) => {
+                  $frame.style.transitionDelay = `${1.35 * i / $frames.length}s`;
+                  $container.appendChild($frame);
+                });
+                
+                replaceElementVisually($elm, $container);
+
+                $container.offsetLeft; 
+                if (!DEBUG) {
+                  $frames.forEach($frame => {
+                    const randomRadian = 2 * Math.PI * (Math.random() - 0.5);
+                    $frame.style.transform = `rotate(${15 * (Math.random() - 0.5)}deg) translate(${60 * Math.cos(randomRadian)}px, ${30 * Math.sin(randomRadian)}px) rotate(${15 * (Math.random() - 0.5)}deg)`;
+                    $frame.style.opacity = 0;
+                  });
+                } else {
+                  $frames.forEach($frame => {
+                    $frame.style.animation = `debug-pulse 5s ease ${$frame.style.transitionDelay} infinite alternate`;
+                  });
+                }
+              });
+            }
+        </script>
+
+        <script type="text/babel">
+            //setTimeout(function(){
+                document.querySelector(".disintegration-target").disintegrated = true;
+                disintegrate(document.querySelector(".disintegration-target"));
+           // }, 500);
+        </script>
     </head>
 
     <body>
@@ -608,6 +691,8 @@
         
 -->
 
+
+
         <div class="frames">
 
           <div class="invert_block">
@@ -725,38 +810,14 @@
                 </li>
               </ul>
 
-              <ul id="second_menu">
-                <li style="
-                display: flex;
-            "><a href="./download_api.html"><span style="
-                color: #434655;
-            ">Download </span></a></li>
-                <li style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            "><a href="./pricing.html"><span>Pricing</span></a></li>
-                <li style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            "><a href="./team.html"><span>Team</span></a></li>
-                <li style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            "><a href="./researches.html"><span>Researches</span></a></li>
-                <li style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            "><a href="./sign_in.html"><span>Sign In</span></a>
+              <ul id="second_menu" style="display: none;">
+                <li><a href="./download_api.html"><span>Download </span></a></li>
+                <li><a href="./pricing.html"><span>Pricing</span></a></li>
+                <li><a href="./team.html"><span>Team</span></a></li>
+                <li><a href="./researches.html">Rese<span style="color:#ff00a5;">a</span>rches</a></li>
+                <li><a href="./sign_in.html"><span>Sign In</span></a>
             </li>
-                <li style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            "><a href="./sign_up.html"><span>Sign Up</span></a></li>
+                <li><a href="./sign_up.html"><span>Sign Up</span></a></li>
 
               </ul>
             </div>
@@ -909,7 +970,7 @@
 
           
             <h2 class="h2-5-mktg-fluid h2-md-mktg-fluid mb-3-fluid"><span class="text-gradient-pink-blue">Smart Neural Equations.</span><br>Neuromathematical intelligent power, to make your company a leader.</h2>
-            <a href="https://github.com/account/organizations/new" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Homepage Collaborate section, click, text:Create a new organization for free;ref_loc:home launchpad">
+            <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Homepage Collaborate section, click, text:Create a new organization for free;ref_loc:home launchpad">
               Calculate your price  <span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
         </span></a>
           </div>
@@ -1057,7 +1118,7 @@
             </div>
           
             <h2 class="h2-5-mktg-fluid h2-md-mktg-fluid mb-3-fluid"><span class="text-gradient-pink-blue">Plasma control.</span><br>For Life among Diamonds.</h2>
-            <a href="https://github.com/account/organizations/new" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Homepage Collaborate section, click, text:Create a new organization for free;ref_loc:home launchpad">
+            <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Homepage Collaborate section, click, text:Create a new organization for free;ref_loc:home launchpad">
               Calculate your price  <span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
         </span></a>
           </div>
@@ -1225,7 +1286,7 @@
                     <h2 class="h2-5-mktg-fluid h1-md-mktg-fluid text-white mb-3-fluid">
                       <span class="text-gradient-turq-purple-dark">Neurogeometry.</span><br>Neurophysiological principles to innovate your marketing.
                     </h2>
-                    <a href="https://github.com/features/codespaces" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-white text-underline" data-ga-click="Home, click to learn more about Codespaces, ref_page:/;ref_cta:Learn more about GitHub Codespaces;ref_loc:codespaces launchpad">
+                    <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-white text-underline" data-ga-click="Home, click to learn more about Codespaces, ref_page:/;ref_cta:Learn more about GitHub Codespaces;ref_loc:codespaces launchpad">
                       Calculate your price  <span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
           </span></a>
                   </div>
@@ -1530,114 +1591,7 @@ color: #5a1d5f;
 
         </div>
 
-        <!--<div class="mx-auto box-shadow-default-mktg wide-block py-0 position-relative home-git-log-dark-icons js-section" id="home-develop">
-          <div class="container-xl p-responsive-fluid height-full position-absolute top-0 left-0 right-0 width-full events-none overflow-hidden">
-            <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid height-full events-none">
-              <div class="col-10 offset-1 home-git-log-dark height-full" style="padding: 6.5rem 0 0;">
-              </div>
-            </div>
-          </div>
-          <div class="container-xl p-responsive-fluid">
-            <div class="d-flex flex-column">
-              <div class="col-11 col-md-10 offset-1" style="padding: 6.5rem 0 0;">
-                <div class="col-8-max mx-lg-auto text-lg-center mb-6-fluid mb-md-8-fluid">
-                  <h2 class="h2-5-mktg-fluid h1-md-mktg-fluid text-white mb-3-fluid">Instant dev environments with <span class="text-gradient-turq-purple-dark">Codespaces</span></h2>
-                  <a href="/features/codespaces" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-white text-underline" data-ga-click="Home, click to learn more about Codespaces, ref_page:/;ref_cta:Learn more about GitHub Codespaces;ref_loc:codespaces launchpad">Learn more about <span class="d-none d-sm-inline">GitHub </span>Codespaces <span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
-        </span></a>
-                </div>
-        
-
-
-                <div class="d-flex flex-column pt-5-fluid z-1">
-                  <div class="js-build-in col-12 col-md-9 col-lg-6 home-codespaces-copy-item home-codespaces-copy-item-1 position-relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 28 20" width="28" class="home-git-icon home-git-item float-left mr-n6-fluid position-relative z-1" style="right: -0.26rem"><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
-        
-                    <h3 class="h5-mktg-fluid h4-sm-mktg-fluid text-gray-light-mktg lh-condensed text-semibold-mktg text-semibold-mktg">The future of code is in the cloud, not your local copy. <span class="text-white">Codespaces gives you a complete, configurable dev environment on top of a powerful VM in minutes.</span></h3>
-                  </div>
-        
-                  <div class="js-build-in col-12 col-md-9 col-lg-6 home-codespaces-copy-item home-codespaces-copy-item-2 position-relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="64" viewBox="0 0 56 64" width="56" class="d-none d-sm-block float-left position-relative z-1" style="margin-left: -4.6875rem;"><path d="m0 0h56v64h-56z" fill="#051127"></path><rect fill="#fff" height="56" rx="16" width="56" y="4"></rect><path d="m43.6096 18.8281-6.923-3.3333c-.8013-.3858-1.7591-.2231-2.388.4058l-22.6636 20.664c-.6096.5558-.6089 1.5155.0015 2.0704l1.8512 1.6829c.4991.4538 1.2506.4871 1.7879.0796l27.2923-20.7046c.9156-.6946 2.2307-.0416 2.2307 1.1077v-.0804c0-.8067-.4621-1.5421-1.189-1.8921z" fill="#0065a9"></path><path d="m43.6096 45.1719-6.923 3.3334c-.8013.3857-1.7591.223-2.388-.4058l-22.6636-20.664c-.6096-.5558-.6089-1.5156.0015-2.0705l1.8512-1.6829c.4991-.4537 1.2506-.4871 1.7879-.0795l27.2923 20.7045c.9156.6946 2.2307.0416 2.2307-1.1077v.0804c0 .8067-.4621 1.5421-1.189 1.8921z" fill="#007acc"></path><path d="m36.6877 48.5059c-.8015.3855-1.7593.2226-2.3882-.4063.7749.7749 2.1.226 2.1-.8699v-30.4603c0-1.096-1.3251-1.6448-2.1-.8699.6289-.6289 1.5867-.7919 2.3882-.4064l6.9219 3.3287c.7274.3498 1.1899 1.0855 1.1899 1.8926v22.5704c0 .8071-.4625 1.5427-1.1899 1.8925z" fill="#1f9cf0"></path></svg>
-        
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 28 20" width="28" class="d-block d-sm-none home-git-icon home-git-item float-left mr-n6-fluid position-relative z-1" style="right: -0.26rem"><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
-        
-                    <h3 class="h5-mktg-fluid h4-sm-mktg-fluid text-gray-light-mktg lh-condensed text-semibold-mktg text-semibold-mktg"><span class="text-white">Visual Studio Code, in your browser, full stop.</span> Codespaces brings the world’s most popular desktop editor to every repo. Code, build, test, use the terminal, and open pull requests from anywhere.</h3>
-                  </div>
-        
-                  <div class="js-build-in col-12 col-md-9 col-lg-6 home-codespaces-copy-item home-codespaces-copy-item-3 position-relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 28 20" width="28" class="home-git-icon home-git-item float-left mr-n6-fluid position-relative z-1" style="right: -0.26rem"><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
-        
-                    <h3 class="h5-mktg-fluid h4-sm-mktg-fluid text-gray-light-mktg lh-condensed text-semibold-mktg text-semibold-mktg"><span class="text-white">Customize to your heart’s desire.</span> Add your favorite VS Code extensions, create a devcontainer config file, install new themes, and tweak your settings.</h3>
-                  </div>
-
-                  <div class="js-build-in col-12 col-md-9 col-lg-6 home-codespaces-copy-item home-codespaces-copy-item-4 position-relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 28 20" width="28" class="home-git-icon home-git-item float-left mr-n6-fluid position-relative z-1" style="right: -0.26rem"><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
-        
-                    <h3 class="h5-mktg-fluid h4-sm-mktg-fluid text-gray-light-mktg lh-condensed text-semibold-mktg text-semibold-mktg"><span class="text-white">Customize to your heart’s desire.</span> Add your favorite VS Code extensions, create a devcontainer config file, install new themes, and tweak your settings.</h3>
-                  </div>
-
-                  <div class="js-build-in col-12 col-md-9 col-lg-6 home-codespaces-copy-item home-codespaces-copy-item-5 position-relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 28 20" width="28" class="home-git-icon home-git-item float-left mr-n6-fluid position-relative z-1" style="right: -0.26rem"><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
-        
-                    <h3 class="h5-mktg-fluid h4-sm-mktg-fluid text-gray-light-mktg lh-condensed text-semibold-mktg text-semibold-mktg"><span class="text-white">Customize to your heart’s desire.</span> Add your favorite VS Code extensions, create a devcontainer config file, install new themes, and tweak your settings.</h3>
-                  </div>
-
-                  <div class="js-build-in col-12 col-md-9 col-lg-6 home-codespaces-copy-item home-codespaces-copy-item-6 position-relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 28 20" width="28" class="home-git-icon home-git-item float-left mr-n6-fluid position-relative z-1" style="right: -0.26rem"><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
-        
-                    <h3 class="h5-mktg-fluid h4-sm-mktg-fluid text-gray-light-mktg lh-condensed text-semibold-mktg text-semibold-mktg"><span class="text-white">Customize to your heart’s desire.</span> Add your favorite VS Code extensions, create a devcontainer config file, install new themes, and tweak your settings.</h3>
-                  </div>
-        
-                  <div class="col-12 col-lg-6 position-absolute top-0 right-0 height-full home-codespaces-illo events-none" style="padding-left: 0 !important; padding-right: 0 !important;">
-                    <div class="home-codespaces-container position-sticky z-1 pt-3-fluid">
-                      <div class="home-codespaces-img-container overflow-hidden d-flex flex-items-start flex-lg-items-center position-relative pl-2-fluid pl-lg-4-fluid">
-                        <picture>
-                          <source srcset="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-1.webp" type="image/webp">
-                          <img src="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-1.png" class="home-codespaces-view home-codespaces-view-1 z-2 rounded-2-fluid box-shadow-active-border-light-mktg" alt="VS Code running in the browser with your project's code and development environment running. A terminal panel is visiable in the editor." loading="lazy">
-                        </picture>
-                        <picture>
-                          <source srcset="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-2.webp" type="image/webp">
-                          <img src="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-2.png" class="home-codespaces-view home-codespaces-view-2 z-2 rounded-2-fluid box-shadow-active-border-light-mktg" alt="VS Code running in the browser with your project's code and development environment running. A terminal panel is visiable in the editor." loading="lazy">
-                        </picture>
-                        <picture>
-                          <source srcset="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-3.webp" type="image/webp">
-                          <img src="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-3.png" class="home-codespaces-view home-codespaces-view-3 z-2 rounded-2-fluid box-shadow-active-border-light-mktg" alt="VS Code running in the browser with your project's code and development environment running. A terminal panel is visiable in the editor." loading="lazy">
-                        </picture>
-                        <picture>
-                          <source srcset="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-1.webp" type="image/webp">
-                          <img src="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-1.png" class="home-codespaces-view home-codespaces-view-4 z-2 rounded-2-fluid box-shadow-active-border-light-mktg" alt="VS Code running in the browser with your project's code and development environment running. A terminal panel is visiable in the editor." loading="lazy">
-                        </picture>
-                        <picture>
-                          <source srcset="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-2.webp" type="image/webp">
-                          <img src="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-2.png" class="home-codespaces-view home-codespaces-view-5 z-2 rounded-2-fluid box-shadow-active-border-light-mktg" alt="VS Code running in the browser with your project's code and development environment running. A terminal panel is visiable in the editor." loading="lazy">
-                        </picture>
-                        <picture>
-                          <source srcset="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-3.webp" type="image/webp">
-                          <img src="https://github.githubassets.com/images/modules/site/home/codespaces-vscode-3.png" class="home-codespaces-view home-codespaces-view-6 z-2 rounded-2-fluid box-shadow-active-border-light-mktg" alt="VS Code running in the browser with your project's code and development environment running. A terminal panel is visiable in the editor." loading="lazy">
-                        </picture>
-
-                      </div>
-        
-                      <div class="home-codespaces-glow-container position-absolute top-0 bottom-0 overflow-hidden">
-                        <img src="https://github.githubassets.com/images/modules/site/home/codespaces-glow.svg" class="home-codespaces-glow position-absolute z-n1" alt="Light glowing behind the editor" loading="lazy">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        
-              </div>
-            </div>
-            <div class="width-full overflow-hidden">
-              <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid">
-                <div class="d-none d-lg-flex offset-1 col-5 px-0 position-relative z-1">
-                  <div class="flex-auto ml-n7-fluid" style="height: 1rem; border-radius: 0 0 0 1rem; border-bottom: 2px solid #424d65; border-left: 2px solid #424d65;"></div>
-                  <div class="mr-n4-fluid" style="width: 1rem; height: 10rem; margin-top: 0.875rem; border-radius: 0 16px 0 0; border-top: 2px solid #424d65; border-right: 2px solid #424d65;"></div>
-                  <div class="ml-n7-fluid height-full position-absolute top-0 width-full z-n1 bg-home-dark" style="background-color: #040d21"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>-->
-        
+       
         <div class="particle_block"> 
 
           <div class="particle_header_wrap">
@@ -1712,7 +1666,7 @@ color: #5a1d5f;
       
             <div class="col-8-max mx-0 mx-lg-auto text-left text-lg-center mb-4-fluid mb-md-7-fluid bg-white pb-3-fluid">
               <h2 class="h2-5-mktg-fluid h1-md-mktg-fluid mb-3-fluid"> <span class="text-gradient-purple-coral no-wrap">Neurophenomenology.</span> Supermind&Science for your success.</h2>
-              <a href="https://github.com/features/actions" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Home, click to learn more about GitHub Actions, ref_page:/;ref_cta:Learn more about GitHub Actions;ref_loc:automate launchpad">
+              <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Home, click to learn more about GitHub Actions, ref_page:/;ref_cta:Learn more about GitHub Actions;ref_loc:automate launchpad">
                 Calculate your price<span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
       </span></a>
             </div>
@@ -2192,7 +2146,7 @@ background: #ffffff;
     display: block;
     text-align: center;
 ">An intelligent engine<br> for your company.</span></h2>
-                <a href="https://github.com/features/actions" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Home, click to learn more about GitHub Actions, ref_page:/;ref_cta:Learn more about GitHub Actions;ref_loc:automate launchpad">
+                <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Home, click to learn more about GitHub Actions, ref_page:/;ref_cta:Learn more about GitHub Actions;ref_loc:automate launchpad">
                   Calculate your price<span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
         </span></a>
               </div>
@@ -2295,7 +2249,7 @@ background: #ffffff;
                   <h2 class="h2-5-mktg-fluid h1-sm-mktg-fluid text-white mt-n9-fluid mb-3-fluid" style="margin-top: 50px!important;">
                      <span class="text-gradient-coral-yellow-dark pb-1-fluid">Neuroaesthetics.</span><br>  New marketing horizons<br> with Deep Neural<br> Smart<br> Equations.</h2>
                      <img src="./images/Neuroaesthetics_2.png" class="formula_neuroaethetics" loading="lazy">
-                  <a href="https://github.com/features/security" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-white text-underline" data-ga-click="Home, click to learn more about advanced security, ref_page:/;ref_cta:Learn more about advanced security;ref_loc:secure launchpad">
+                  <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-white text-underline" data-ga-click="Home, click to learn more about advanced security, ref_page:/;ref_cta:Learn more about advanced security;ref_loc:secure launchpad">
                     Calculate your price <span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path></svg>
     </span></a>
                 </div>
@@ -2704,7 +2658,7 @@ background: #ffffff;
                     <h2 class="h2-5-mktg-fluid h2-md-mktg-fluid mb-3-fluid">
                       <span class="text-gradient-pink-blue">The mysterious shimmer</span>
                       <br>of AI-diamonds in the crown of your success.</h2>
-                    <a href="https://github.com/account/organizations/new" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Homepage Collaborate section, click, text:Create a new organization for free;ref_loc:home launchpad">Calculate your price
+                    <a href="./pricing.html" class="btn-mktg-fluid btn-lg-invisible-mktg-fluid Bump-link text-gray-dark-mktg text-underline" data-ga-click="Homepage Collaborate section, click, text:Create a new organization for free;ref_loc:home launchpad">Calculate your price
                       <span class="Bump-link-symbol"><svg class="octicon" height="16" viewBox="0 0 16 16" width="16"><path clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd"></path>
                     </svg>
                 </span></a>
@@ -2860,9 +2814,7 @@ background: #ffffff;
   
                   <div class="col-12 col-lg-5" style="margin-right: -130px;">
                     <div class="js-build-in-item home-discussions-comp position-relative" style="max-width: unset;">
-                      <div class="rounded-2-fluid box-shadow-default-border-mktg position-relative z-1 overflow-hidden home-discussions-1">
-                        <img src="community-discussions-1.png" class="opacity-4 width-full" loading="lazy">
-                      </div>
+
   
                       <div class="rounded-2-fluid box-shadow-active-mktg position-relative z-1 float-right home-discussions-2">  
                         <div class="rounded-2-fluid float-right home-discussions-answer overflow-hidden">
@@ -3046,7 +2998,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
               <li class="col-12 d-flex flex-items-center position-relative f5-mktg-fluid text-gray-light-mktg py-2-fluid unselectable" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="22" viewBox="0 0 24 22" width="28" class="home-git-heart-icon home-git-item flex-shrink-0 mr-3-fluid position-relative z-1"><path clip-rule="evenodd" d="m11.655 17.9159c.0002.0002.0004.0003.345-.6659.3446.6662.3448.6661.345.6659-.2161.1118-.4739.1118-.69 0zm0 0 .345-.6659.345.6659.0023-.0012.0054-.0028.0185-.0097c.0157-.0083.0381-.0202.0667-.0357.0573-.0309.1396-.0761.2433-.1348.2074-.1175.5011-.2897.8524-.5118.701-.4432 1.6392-1.0899 2.5811-1.9018 1.8407-1.5869 3.8853-3.9678 3.8853-6.8181 0-2.66421-2.0858-4.5-4.25-4.5-1.5474 0-2.9029.80151-3.75 2.01995-.8471-1.21844-2.20264-2.01995-3.75-2.01995-2.16421 0-4.25 1.83579-4.25 4.5 0 2.8503 2.04459 5.2312 3.8853 6.8181.94187.8119 1.88008 1.4586 2.5811 1.9018.3513.2221.645.3943.8524.5118.1037.0587.186.1039.2433.1348.0286.0155.051.0274.0667.0357l.0185.0097.0054.0028z" fill="#ea4aaa" fill-rule="evenodd"></path></svg>
   
-                <img src="./images/_h1.png" class="d-none d-sm-block flex-shrink-0 avatar avatar-4 mr-3-fluid circle bg-gray" loading="lazy">
+                <img src="./images/h1.png" class="d-none d-sm-block flex-shrink-0 avatar avatar-4 mr-3-fluid circle bg-gray" loading="lazy">
   
                 <span class="text-gray-mktg text-truncate"><strong class="text-semibold-mktg text-gray-dark-mktg">emily</strong> started using Smart Neural IE for <strong class="text-semibold-mktg text-gray-dark-mktg">$9/month</strong>1 day ago</span>
               </li>
@@ -3054,14 +3006,14 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
               <li class="col-12 d-flex flex-items-center position-relative f5-mktg-fluid text-gray-light-mktg py-2-fluid unselectable" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="22" viewBox="0 0 24 22" width="28" class="home-git-heart-icon home-git-item flex-shrink-0 mr-3-fluid position-relative z-1"><path clip-rule="evenodd" d="m11.655 17.9159c.0002.0002.0004.0003.345-.6659.3446.6662.3448.6661.345.6659-.2161.1118-.4739.1118-.69 0zm0 0 .345-.6659.345.6659.0023-.0012.0054-.0028.0185-.0097c.0157-.0083.0381-.0202.0667-.0357.0573-.0309.1396-.0761.2433-.1348.2074-.1175.5011-.2897.8524-.5118.701-.4432 1.6392-1.0899 2.5811-1.9018 1.8407-1.5869 3.8853-3.9678 3.8853-6.8181 0-2.66421-2.0858-4.5-4.25-4.5-1.5474 0-2.9029.80151-3.75 2.01995-.8471-1.21844-2.20264-2.01995-3.75-2.01995-2.16421 0-4.25 1.83579-4.25 4.5 0 2.8503 2.04459 5.2312 3.8853 6.8181.94187.8119 1.88008 1.4586 2.5811 1.9018.3513.2221.645.3943.8524.5118.1037.0587.186.1039.2433.1348.0286.0155.051.0274.0667.0357l.0185.0097.0054.0028z" fill="#ea4aaa" fill-rule="evenodd"></path></svg>
   
-                <img src="./images/_h2.png" class="d-none d-sm-block flex-shrink-0 avatar avatar-4 mr-3-fluid circle bg-gray" loading="lazy">
+                <img src="./images/h2.png" class="d-none d-sm-block flex-shrink-0 avatar avatar-4 mr-3-fluid circle bg-gray" loading="lazy">
                 <span class="text-gray-mktg text-truncate"><strong class="text-semibold-mktg text-gray-dark-mktg">joe</strong> started using Smart Neural IE for <strong class="text-semibold-mktg text-gray-dark-mktg">$9/month</strong> 2 weeks ago</span>
               </li>
   
               <li class="col-12 d-flex flex-items-center position-relative f5-mktg-fluid text-gray-light-mktg py-2-fluid unselectable" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="22" viewBox="0 0 24 22" width="28" class="home-git-heart-icon home-git-item flex-shrink-0 mr-3-fluid position-relative z-1"><path clip-rule="evenodd" d="m11.655 17.9159c.0002.0002.0004.0003.345-.6659.3446.6662.3448.6661.345.6659-.2161.1118-.4739.1118-.69 0zm0 0 .345-.6659.345.6659.0023-.0012.0054-.0028.0185-.0097c.0157-.0083.0381-.0202.0667-.0357.0573-.0309.1396-.0761.2433-.1348.2074-.1175.5011-.2897.8524-.5118.701-.4432 1.6392-1.0899 2.5811-1.9018 1.8407-1.5869 3.8853-3.9678 3.8853-6.8181 0-2.66421-2.0858-4.5-4.25-4.5-1.5474 0-2.9029.80151-3.75 2.01995-.8471-1.21844-2.20264-2.01995-3.75-2.01995-2.16421 0-4.25 1.83579-4.25 4.5 0 2.8503 2.04459 5.2312 3.8853 6.8181.94187.8119 1.88008 1.4586 2.5811 1.9018.3513.2221.645.3943.8524.5118.1037.0587.186.1039.2433.1348.0286.0155.051.0274.0667.0357l.0185.0097.0054.0028z" fill="#ea4aaa" fill-rule="evenodd"></path></svg>
   
-                <img src="./images/_h3.png" class="d-none d-sm-block flex-shrink-0 avatar avatar-4 mr-3-fluid circle bg-gray" loading="lazy">
+                <img src="./images/h3.png" class="d-none d-sm-block flex-shrink-0 avatar avatar-4 mr-3-fluid circle bg-gray" loading="lazy">
                 <span class="text-gray-mktg text-truncate"><strong class="text-semibold-mktg text-gray-dark-mktg">fiona</strong> started using Smart Neural IE for <strong class="text-semibold-mktg text-gray-dark-mktg">free/month</strong> 2 days ago</span>
               </li>
   
@@ -3788,17 +3740,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           </div>
         </footer>
 
-  <!-- icons -->
-  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-  <!-- gsap -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
-    integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
-  <!-- three js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js"
-    integrity="sha256-3mBEX8I0uMLF7+AUjJeTCelosuorzYpqwBMBPDTyQqY=" crossorigin="anonymous"></script>
-  <script src="https://raw.githubusercontent.com/codicts/Fashion-Landing-Page/master/hover-effect.umd.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
 
         
 
@@ -3806,90 +3748,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js"></script>
         <script src="./js/html2canvas.min.js"></script>
         <script src="./js/chance.min.js"></script>
-        <script src="./js/babel.min.js"></script>
-        <script src="./js/arctext.js"></script>
 
 
-        <script type="text/babel">
-            const DEBUG = false;
-            const REPETITION_COUNT = 2;
-            const NUM_FRAMES = 328;
 
-            function generateFrames($canvas, count = 32) {
-              const { width, height } = $canvas;
-              const ctx = $canvas.getContext("2d");
-              const originalData = ctx.getImageData(0, 0, width, height);
-              const imageDatas = [...Array(count)].map(
-                (_,i) => ctx.createImageData(width, height)
-              );
-              
-              for (let x = 0; x < width; ++x) {
-                for (let y = 0; y < height; ++y) {
-                  for (let i = 0; i < REPETITION_COUNT; ++i) {
-                    const dataIndex = Math.floor(
-                      count * (Math.random() + 2 * x / width) / 3
-                    );
-                    const pixelIndex = (y * width + x) * 4;
-                    for (let offset = 0; offset < 4; ++offset) {
-                      imageDatas[dataIndex].data[pixelIndex + offset]
-                        = originalData.data[pixelIndex + offset];
-                    }
-                  }
-                }
-              }
-              
-              return imageDatas.map(data => {
-                const $c = $canvas.cloneNode(true);
-                $c.getContext("2d").putImageData(data, 0, 0);
-                return $c;
-              });
-            }
 
-            function replaceElementVisually($old, $new) {
-              const $parent = $old.offsetParent;
-              $new.style.top = `${$old.offsetTop}px`;
-              $new.style.left = `${$old.offsetLeft}px`;
-              $new.style.width = `${$old.offsetWidth}px`;
-              $new.style.height = `${$old.offsetHeight}px`;
-              $parent.appendChild($new);
-              $old.style.visibility = "hidden";
-            }
-
-            function disintegrate($elm) {
-              html2canvas($elm).then($canvas => {    
-                const $container = document.createElement("div");
-                $container.classList.add("disintegration-container");
-                
-                const $frames = generateFrames($canvas, NUM_FRAMES);
-                $frames.forEach(($frame, i) => {
-                  $frame.style.transitionDelay = `${1.35 * i / $frames.length}s`;
-                  $container.appendChild($frame);
-                });
-                
-                replaceElementVisually($elm, $container);
-
-                $container.offsetLeft; 
-                if (!DEBUG) {
-                  $frames.forEach($frame => {
-                    const randomRadian = 2 * Math.PI * (Math.random() - 0.5);
-                    $frame.style.transform = `rotate(${15 * (Math.random() - 0.5)}deg) translate(${60 * Math.cos(randomRadian)}px, ${30 * Math.sin(randomRadian)}px) rotate(${15 * (Math.random() - 0.5)}deg)`;
-                    $frame.style.opacity = 0;
-                  });
-                } else {
-                  $frames.forEach($frame => {
-                    $frame.style.animation = `debug-pulse 5s ease ${$frame.style.transitionDelay} infinite alternate`;
-                  });
-                }
-              });
-            }
-        </script>
-
-        <script type="text/babel">
-            setTimeout(function(){
-                document.querySelector(".disintegration-target").disintegrated = true;
-                disintegrate(document.querySelector(".disintegration-target"));
-            }, 2500);
-        </script>
 
         <script>
           $(document).ready(function() {
@@ -4081,6 +3943,22 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           });
         </script>
         
+          <!-- icons -->
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"  type="module"></script>
+  <!-- gsap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+    integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"  type="module"></script>
+  <!-- three js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js"
+    integrity="sha256-3mBEX8I0uMLF7+AUjJeTCelosuorzYpqwBMBPDTyQqY=" crossorigin="anonymous"  type="module"></script>
+  <script src="https://raw.githubusercontent.com/codicts/Fashion-Landing-Page/master/hover-effect.umd.js"  type="module"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"  type="module"></script>
+
+        
+        <script src="./js/arctext.js"  type="module"></script>
+
+   
 
         <script>
 
@@ -4194,7 +4072,7 @@ onload = onresize = function() {
 
 </script>
 
-        <script>
+        <script  type="module">
           function isInViewport(el) {
               const rect = el.getBoundingClientRect();
               return (
@@ -4316,6 +4194,11 @@ onload = onresize = function() {
 
           $(document).ready(function() {
               $(".more_info").click(function() {
+                  if (document.querySelector(".dialog_main").style.display == "flex") {
+                    document.querySelector(".dialog_main").style.display = "none";
+                    insertAfter(document.querySelector(".dialog_main") , document.querySelector("#bm"));
+                  }
+
                   document.querySelector(".chatbot_wrapper").style.background = "#000000ab";
                   document.querySelector(".chatbot_wrapper").style.width = "100%";
                   document.querySelector(".chatbot_wrapper").style.height = "100%";
@@ -4443,7 +4326,7 @@ onload = onresize = function() {
 
                   setTimeout(function(){
                     var botAnswer = document.createElement("div");
-                    botAnswer.innerHTML = "<p>The official launch of our website is scheduled for July 1, 2021. If you want to chat with me in full format and see all the power of Smart IE for linguistic processing - come to us on July 1, 2021 and I will be glad to talk with you on any topic and become your best bot friend forever.</p>"; 
+                    botAnswer.innerHTML = "<p>The official launch of our website is scheduled for July 1, 2021. If you want to chat with me in full format and see all the power of Smart IE for linguistic processing - come to us on July 1, 2021 and I will be glad to talk with you on any topic and become your best bot-friend forever.</p>"; 
                     botAnswer.classList.add("message_bot");
                     document.querySelector(".dialog__").append(botAnswer);
 
@@ -4611,7 +4494,7 @@ onload = onresize = function() {
         </script>
         <script src="./js/wtcgl.js"> </script>
 
-        <script>
+        <script  type="module">
           function normalPool(o){var r=0;do{var a=Math.round(normal({mean:o.mean,dev:o.dev}));if(a<o.pool.length&&a>=0)return o.pool[a];r++}while(r<100)}function randomNormal(o){if(o=Object.assign({mean:0,dev:1,pool:[]},o),Array.isArray(o.pool)&&o.pool.length>0)return normalPool(o);var r,a,n,e,l=o.mean,t=o.dev;do{r=(a=2*Math.random()-1)*a+(n=2*Math.random()-1)*n}while(r>=1);return e=a*Math.sqrt(-2*Math.log(r)/r),t*e+l}
 
           const NUM_PARTICLES = 3900;

@@ -6,26 +6,28 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80%;
 }
 
 .team_member {
     display: flex;
     align-items: center;
+    width: 70%;
+    margin-bottom: 100px;
 }
 
 .team_member img {
     border-radius: 100%;
     width: 300px;
+    border: 2px solid white;
 }
 
 .team_member.right {
-    margin-left: 40%;
     flex-direction: row-reverse;
     text-align: right;
 }
 
 .team_member.left {
-    margin-right: 30%;
     text-align: left;
 }
 
@@ -45,6 +47,9 @@ body {
     -webkit-box-decoration-break: clone;
 }
 
+.h2-5-mktg-fluid {
+    color: #cccccc;
+}
 
 #main {
     background-image: url(../images/long_background.svg);
@@ -71,14 +76,8 @@ body {
 }
 
 .mt_1 {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    background: -webkit-linear-gradient(
--70deg
-,#602665,#0d8036,#756de9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-box-decoration-break: clone;
+    color: white;
+    font-size: 4.5rem!important;
     text-align: center;
+    padding-bottom: 100px;
 }

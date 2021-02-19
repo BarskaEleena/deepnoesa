@@ -81,3 +81,27 @@ body {
     text-align: center;
     padding-bottom: 100px;
 }
+
+
+.home-git-log-light:after {
+    left: -1.5rem;
+    top: -1915px;
+    margin-right: -42px;
+}
+
+.right.home-git-log-dark:after {
+    right: 0rem!important;
+    left: unset!important;
+    z-index: 0;
+    top: -2660px;
+    margin-bottom: -144px;
+}
+
+.text-gradient-green-blue {
+    background: -webkit-linear-gradient(
+        -70deg
+        ,#602665,#0d8036,#756de9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-box-decoration-break: clone;
+}

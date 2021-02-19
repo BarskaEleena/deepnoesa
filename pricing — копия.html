@@ -3,12 +3,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" href="./css/styles.css">
-        <link rel="stylesheet" href="./css/black_white.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400&display=swap" rel="stylesheet">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     </head>
 
     <body>
@@ -301,8 +297,8 @@
                 <menu>
                     <ul>
                         <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
                         <li><a href="#">H-Incubator</a></li>
-                        <li><a href="#">Pricing</a></li>
                         <li><a href="#">Team</a></li>
                         <li><a href="#">Rese<span style="color: #822f8a;">a</span>rches</a></li>
                         <li class="menu_signin"><a href="#">Sign In</a></li>
@@ -312,41 +308,13 @@
             </div>
             
 
-            
+        </div>
 
-            <div class="main_text">
-                
-                <div class="mt_1">  Jewelries for your business 
-                  <div class="diamond"><img src="./d3.png" alt=""></div> 
-                </div>   
+        <div>
+          <h2></h2>
+          <div>
 
-                <div class="slides">
-
-                  <div class="slide">
-                    <div>
-                      <img class="box" src="./product_box.png" alt="">
-                      <p>Product name</p>
-                      <img class="" src="" alt="">
-                    </div>
-                    <div>
-                      <button><a href="">More подробнее</a></button>
-                    </div>
-                  </div>
-
-                  <div class="slide">
-                    <div>
-                      <img class="box" src="./product_box.png" alt="">
-                      <p>Product name2</p>
-                      <img class="" src="" alt="">
-                    </div>
-                    <div>
-                      <button><a href="">More подробнее</a></button>
-                    </div>
-                  </div>
-
-                </div>
-
-            </div>
+          </div>
         </div>
 
 
@@ -412,75 +380,83 @@
         <script src="./js/babel.min.js"></script>
         <script src="./arctext.js"></script>
 
+        <script type="text/babel">
+            const DEBUG = false;
+            const REPETITION_COUNT = 2;
+            const NUM_FRAMES = 128;
 
-
-        <script>
-          // ------------- VARIABLES ------------- //
-          var ticking = false;
-          var isFirefox = (/Firefox/i.test(navigator.userAgent));
-          var isIe = (/MSIE/i.test(navigator.userAgent)) || (/Trident.*rv\:11\./i.test(navigator.userAgent));
-          var scrollSensitivitySetting = 30; //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive) 
-          var slideDurationSetting = 600; //Amount of time for which slide is "locked"
-          var currentSlideNumber = 0;
-          var totalSlideNumber = $(".background").length;
-
-          // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
-          function parallaxScroll(evt) {
-            if (isFirefox) {
-              //Set delta for Firefox
-              delta = evt.detail * (-120);
-            } else if (isIe) {
-              //Set delta for IE
-              delta = -evt.deltaY;
-            } else {
-              //Set delta for all other browsers
-              delta = evt.wheelDelta;
+            function generateFrames($canvas, count = 32) {
+              const { width, height } = $canvas;
+              const ctx = $canvas.getContext("2d");
+              const originalData = ctx.getImageData(0, 0, width, height);
+              const imageDatas = [...Array(count)].map(
+                (_,i) => ctx.createImageData(width, height)
+              );
+              
+              for (let x = 0; x < width; ++x) {
+                for (let y = 0; y < height; ++y) {
+                  for (let i = 0; i < REPETITION_COUNT; ++i) {
+                    const dataIndex = Math.floor(
+                      count * (Math.random() + 2 * x / width) / 3
+                    );
+                    const pixelIndex = (y * width + x) * 4;
+                    for (let offset = 0; offset < 4; ++offset) {
+                      imageDatas[dataIndex].data[pixelIndex + offset]
+                        = originalData.data[pixelIndex + offset];
+                    }
+                  }
+                }
+              }
+              
+              return imageDatas.map(data => {
+                const $c = $canvas.cloneNode(true);
+                $c.getContext("2d").putImageData(data, 0, 0);
+                return $c;
+              });
             }
 
-            if (ticking != true) {
-              if (delta <= -scrollSensitivitySetting) {
-                //Down scroll
-                ticking = true;
-                if (currentSlideNumber !== totalSlideNumber - 1) {
-                  currentSlideNumber++;
-                  nextItem();
-                }
-                slideDurationTimeout(slideDurationSetting);
-              }
-              if (delta >= scrollSensitivitySetting) {
-                //Up scroll
-                ticking = true;
-                if (currentSlideNumber !== 0) {
-                  currentSlideNumber--;
-                }
-                previousItem();
-                slideDurationTimeout(slideDurationSetting);
-              }
+            function replaceElementVisually($old, $new) {
+              const $parent = $old.offsetParent;
+              $new.style.top = `${$old.offsetTop}px`;
+              $new.style.left = `${$old.offsetLeft}px`;
+              $new.style.width = `${$old.offsetWidth}px`;
+              $new.style.height = `${$old.offsetHeight}px`;
+              $parent.appendChild($new);
+              $old.style.visibility = "hidden";
             }
-          }
 
-          // ------------- SET TIMEOUT TO TEMPORARILY "LOCK" SLIDES ------------- //
-          function slideDurationTimeout(slideDuration) {
-            setTimeout(function() {
-              ticking = false;
-            }, slideDuration);
-          }
+            function disintegrate($elm) {
+              html2canvas($elm).then($canvas => {    
+                const $container = document.createElement("div");
+                $container.classList.add("disintegration-container");
+                
+                const $frames = generateFrames($canvas, NUM_FRAMES);
+                $frames.forEach(($frame, i) => {
+                  $frame.style.transitionDelay = `${1.35 * i / $frames.length}s`;
+                  $container.appendChild($frame);
+                });
+                
+                replaceElementVisually($elm, $container);
 
-          // ------------- ADD EVENT LISTENER ------------- //
-          var mousewheelEvent = isFirefox ? "DOMMouseScroll" : "wheel";
-          window.addEventListener(mousewheelEvent, _.throttle(parallaxScroll, 60), false);
+                $container.offsetLeft; 
+                if (!DEBUG) {
+                  $frames.forEach($frame => {
+                    const randomRadian = 2 * Math.PI * (Math.random() - 0.5);
+                    $frame.style.transform = `rotate(${15 * (Math.random() - 0.5)}deg) translate(${60 * Math.cos(randomRadian)}px, ${30 * Math.sin(randomRadian)}px) rotate(${15 * (Math.random() - 0.5)}deg)`;
+                    $frame.style.opacity = 0;
+                  });
+                } else {
+                  $frames.forEach($frame => {
+                    $frame.style.animation = `debug-pulse 8s ease ${$frame.style.transitionDelay} infinite alternate`;
+                  });
+                }
+              });
+            }
 
-          // ------------- SLIDE MOTION ------------- //
-          function nextItem() {
-            var $previousSlide = $(".background").eq(currentSlideNumber - 1);
-            $previousSlide.removeClass("up-scroll").addClass("down-scroll");
-          }
-
-          function previousItem() {
-            var $currentSlide = $(".background").eq(currentSlideNumber);
-            $currentSlide.removeClass("down-scroll").addClass("up-scroll");
-          }
+                
         </script>
+        
+
 
         <script id="script_1">
             var svg = document.querySelector(".sp svg path");
@@ -488,10 +464,14 @@
             document.querySelector('linearGradient').style.display = "initial";
         </script>
 
+        <script type="text/babel">
+            setTimeout(function(){
+                document.querySelector(".disintegration-target").disintegrated = true;
+                disintegrate(document.querySelector(".disintegration-target"));
+            }, 200);
+        </script>
+
         <script>
-
-
-
             Element.prototype.remove = function() {
                 this.parentElement.removeChild(this);
             }

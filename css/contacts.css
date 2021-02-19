@@ -48,7 +48,7 @@ canvas {
 
 
 #bm {
-    transform: scale(3);
+    /*transform: scale(3);*/
     position: relative;
     left: unset;
     right: unset;
@@ -57,7 +57,6 @@ canvas {
 
 .contact_form {
     font-size: 30px;
-    width: 500px;
 }
 
 .field {
@@ -67,6 +66,7 @@ canvas {
 .field input {
     padding: 5px;
     font-size: 20px;
+    width: 100%;
 }
 
 .field p {

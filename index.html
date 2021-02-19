@@ -112,6 +112,16 @@
          </defs>
       </svg>
 
+      <svg class="svg-defs">
+        <defs>
+          <clipPath id="clipping_line">
+            <path fill="#75609C" d="M56.1,67.2C69.3,58.7,83,49.9,92.9,39.3C104,27.4,109.1,15,109.1,0l4.2,0c0,36.4-28.1,54.4-55.3,71.9
+            c-13.2,8.5-26.9,17.2-36.8,27.9C10.1,111.6,5,124,5,139H0.8C0.8,102.6,28.9,84.6,56.1,67.2z"/>
+          <rect x="0.8" y="139" fill="#75609C" width="4.2" height="6919.1"/>
+          </clipPath>
+        </defs>
+      </svg>  
+
       <svg class="svg-defs" viewBox="0 0 1318.9 429.5" width="90%">
         <defs>
           <clipPath id="clipping_9">
@@ -131,14 +141,6 @@
           </clipPath>
         </defs>
       </svg>  
-
-      <svg class="svg-defs"  viewBox="0 0 110 142">
-        <defs>
-              <clipPath id="clipping_line">
-                <path d="m1-8c0 75 108 75 108 150" stroke-width="2" vector-effect="non-scaling-stroke" style="stroke: #7919d8;stroke-width: 5px;"></path>
-              </clipPath>
-         </defs>
-      </svg>
 
       <svg class="svg-defs" id="clipping_5"  viewBox="0 0 1588.3 394">
         <defs>
@@ -419,7 +421,7 @@
                 </div>
                 
                 <p class="under_main_t">Join the project and get a star level of Deep Learning</p>
-                <a class="button" href="#" target="_blank">
+                <a class="button" href="./download_api.html" target="_blank">
                     <span title="Let's do this" data-front="Download API">Let's do this</span>
                 </a>
                 
@@ -871,7 +873,7 @@
             <g id="Layer_3">
                   
               <path class="st2" d="M515.7,1c0,14.4-27.8,26.1-62.4,26.3c-0.3,0-173.1-0.6-385.8-1"></path>
-                                <path class="st3" d="M68.1,86.9c-0.1-28.2,1.9-28.7,24.2-29"></path>
+                                <path class="st3" d="M68.1,86.9c-0.1-28.2,1.9-28.7,28.2-29"></path>
                                 <path class="st4" d="M326,0c0,14.8-27,26.8-60.5,26.8"></path>
                                 <path class="st5" d="M204.9,0c0,14.8,24.6,26.8,55.1,26.8"></path>
                                 <path class="st6" d="M84.5,0c0,16,64.8,26.8,147.7,26.8"></path>
@@ -920,11 +922,28 @@
         
         
         <div class="home-git-log-light col-10 offset-1 pb-6-fluid pt-6-fluid pt-md-0-fluid line_height">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 110 142" class="d-none d-md-block position-relative home-branch offset-n1" style="transform: scaleX(-1);display: block!important;position: absolute!important;width: 112px;height: 8.875rem;overflow: hidden;z-index: 999999999;margin-left: -198px;
+          <!--<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 110 142" class="d-none d-md-block position-relative home-branch offset-n1" style="transform: scaleX(-1);display: block!important;position: absolute!important;width: 112px;height: 8.875rem;overflow: hidden;z-index: 999999999;margin-left: -198px;
           margin-top: 8px;"><path d="m1-8c0 75 108 75 108 150" stroke-width="2" vector-effect="non-scaling-stroke" style="
             stroke: #7919d8;
             stroke-width: 5px;
-        "></path></svg>
+        "></path></svg>-->
+
+        <div style="
+    position: absolute;
+    width: 200px;
+    height: 10068px;
+    background: black;
+    clip-path: url(#clipping_line);
+    margin-left: -156px;
+    background: #7919d8;
+    animation: animateBg 10s linear infinite;
+    background-image: linear-gradient(
+0deg
+,#602665,#0d8036,#7919d8, #756de9,#602665,#0d8036,#7919d8);
+    background-size: 100% 211%;
+    z-index:999;
+"></div>
+
           <div class="col-5-max">
             <div class="mb-6-fluid mt-n3-fluid">
               <div class="d-flex flex-items-center position-relative  unselectable" aria-hidden="true">
@@ -4025,7 +4044,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             _();
             setTimeout(function(){
               z();
-            }, 4000);  
+            }, 7000);  
           }, 1000);
           
         } else if (isInViewport(invert_block) == false) {
@@ -4165,6 +4184,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
               $("a[href$='#neuroaesthetics']").removeClass("underline");
               $("a[href$='#c_commerce']").removeClass("underline");
             }  
+
+            if ($(this).children('.home-codespaces-copy-item-1').hasClass("build-in-animate")) {
+              $(this).css("cursor", "zoom-in");
+            } else {
+              $(this).css("cursor", "unset");
+            }
         });
 
           const main_block = document.querySelector('.main_text');
@@ -4212,6 +4237,23 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             document.querySelector(".more_info_window").style.display = "none";
           });*/
 
+          
+          $(document).on("click", ".mt_1_1", function () {
+            var win = window.open('./researches.html', '_blank');
+          }); 
+
+          $(document).on("click", ".desc_text", function () {
+            var win = window.open('./researches.html', '_blank');
+          }); 
+
+          $(document).on("click", ".menu_logo", function () {
+            var win = window.open('./index.html', '_blank');
+          }); 
+          
+          $(document).on("click", ".webdesigntuts-workshop input", function () {
+            var win = window.open('./download_api.html', '_blank');
+          });
+
           $(document).on("click", ".scheme_img", function () {
             var image = $(this).attr('big_img'); 
             document.querySelector(".scheme_big").innerHTML = "<img src='./images/products/"+image+"' class=\"scheme_img_big\" loading=\"lazy\">";
@@ -4220,9 +4262,37 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
           $(document).ready(function() {
 
+            $(".d-flex.flex-column.pt-5-fluid").on({
+                mouseenter: function () {
+                  if ($(this).children('.home-codespaces-copy-item-1').hasClass("build-in-animate")) {
+                    $(this).css("cursor", "zoom-in");
+                  }
+                },
+                mouseleave: function () {
+                  if ($(this).children('.home-codespaces-copy-item-1').hasClass("build-in-animate")) {
+                    $(this).css("cursor", "unset");
+                  }
+                }
+            });
+
+            $(".d-flex.flex-column.pt-5-fluid").hover(function() {
+              
+              if ($(this).children('.home-codespaces-copy-item-1').hasClass("build-in-animate")) {
+                $(this).css("cursor", "zoom-in");
+              } else {
+                $(this).css("cursor", "unset");
+              }
+
+            });
+
+            $(".d-flex.flex-column.pt-5-fluid").click(function() {
+              if ($(this).children('.home-codespaces-copy-item-1').hasClass("build-in-animate")) {
+                document.querySelector(".scheme_big").innerHTML = "<img src='./images/products/bs2.png' class=\"scheme_img_big\" loading=\"lazy\">";
+                document.querySelector(".scheme_big").style.display = "flex";
+              }
+            });
 
             $('#products_menu li').hover(
-              
               function(){ $(this).addClass('underline') },
               function(){ $(this).removeClass('underline') }
             );

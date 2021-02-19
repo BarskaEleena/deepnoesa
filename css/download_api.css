@@ -2,13 +2,13 @@
 @media screen{
     .container{margin-right:auto;margin-left:auto;padding-left:5px;padding-right:5px;}
     @media (min-width:768px){
-    .container{width:720px;}
+    .container{width:820px;}
     }
     @media (min-width:1024px){
-    .container{width:960px;}
+    .container{width:1060px;}
     }
     @media (min-width:1200px){
-    .container{width:1180px;}
+    .container{width:1280px;}
     }
     .row{margin-left:-5px;margin-right:-5px;}
     .col-lg-2,.col-lg-6,.col-lg-8,.col-xs-4{position:relative;min-height:1px;padding-left:5px;padding-right:5px;}
@@ -216,7 +216,7 @@
     .comparative-facelift .cta-group__prices{padding-bottom:10px;}
     .comparative-facelift .cta-group__old-price{color:#6f7073;}
     .comparative-facelift .cta-group__current-price{font-size:20px;font-size:2rem;}
-    .comparative-facelift .comparative__subrow:nth-child(odd){background-color:#f7f7f77d;}
+    .comparative-facelift .comparative__subrow:nth-child(odd){background-color:#f7f7f77d;color: black;}
     .comparative-facelift .comparative__header{height:100px;padding:0;-webkit-box-align:stretch;-webkit-align-items:stretch;-ms-flex-align:stretch;align-items:stretch;}
     .comparative-facelift .comparative__header__text{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding:5px 30px 2px;}
     .comparative-facelift .comparative__header__title{font-size:16px;font-size:1.6rem;text-transform:none;display:inline-block;-webkit-align-self:flex-start;-ms-flex-item-align:start;align-self:flex-start;}
@@ -381,4 +381,18 @@ h3 {
 
 .comparative-facelift .comparative__product-name {
     font-weight: 200;
+}
+
+.container {
+    background: #ffffff87;
+    padding: 0 100px;
+    border-radius: .375rem!important;
+}
+
+.mt_1 {
+    color: white;
+    font-size: 4.5rem!important;
+    text-align: center;
+    padding-bottom: 40px;
+    margin-top: 60px;
 }

@@ -1677,7 +1677,7 @@ body.anim #main::before {
     cursor: pointer;
     right: 12%;
     margin-top: 50px;
-  }
+}
 
 
 :-ms-input-placeholder{color:var(--color-text-placeholder);opacity:1;}
@@ -2109,7 +2109,7 @@ img{border-style:none;}
 }
 
 .home-codespaces-view-1:hover {
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .home-codespaces-copy-item-3.build-in-animate~.home-codespaces-illo .home-codespaces-view-2,
@@ -2884,9 +2884,9 @@ flex-lg-row {
 
 .formula_neurophenomenology {
     position: absolute;
-    margin-top: 358px;
+    margin-top: 386px;
     width: 643px;
-    transform: rotate(35deg);
+    transform: rotate(31deg);
     margin-left: -221px;
     right: 102px;
 }
@@ -3723,10 +3723,23 @@ ul.pb-5-fluid.right {
 }
 
 
-#products_menu a:hover {
+#products_menu a {
     border-bottom: 2px solid transparent;
+    padding-bottom: 8px;
 }
+
+
 
 #products_menu a:hover {
     border-bottom: 2px solid #5a1d5f;
+    padding-bottom: 8px;
+}
+
+#products_menu.sticky a:hover {
+    border-bottom: unset;
+}
+
+
+.home-git-log-light.col-12:after {
+    display: none;
 }

@@ -53,7 +53,6 @@
     h1{font-size:40px;}
     h2{font-size:32px;}
     h3{font-size:26px;}
-    p{margin:0 0 12px;}
     .text-left{text-align:left;}
     h1,h2,h3{margin-top:0;}
     h1{font-size:40px;font-size:4rem;}
@@ -310,7 +309,7 @@
     background-size: cover;
     background-color: #646464;
     background-position-y: -265px;
-    padding-bottom: 60px;
+    padding-bottom: 160px;
 }
 
 
@@ -395,4 +394,51 @@ h3 {
     text-align: center;
     padding-bottom: 40px;
     margin-top: 60px;
+}
+
+.btn {
+    padding-top: 9px;
+    padding-bottom: 10px;
+    border-radius: unset;
+}
+
+:root {
+    --borderWidth: 2px;
+    --height: 24px;
+    --width: 12px;
+    --borderColor: #78b13f;
+}
+  
+  
+.check {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: var(--height);
+    width: var(--width);
+    border-bottom: var(--borderWidth) solid var(--borderColor);
+    border-right: var(--borderWidth) solid var(--borderColor);
+  }
+
+.green_check {
+    border-bottom: var(--borderWidth) solid #205400;
+    border-right: var(--borderWidth) solid #205400;
+}
+
+.violet_check {
+    border-bottom: var(--borderWidth) solid #5a1d5f;
+    border-right: var(--borderWidth) solid #5a1d5f;
+}
+
+.brown_check {
+    border-bottom: var(--borderWidth) solid #332217;
+    border-right: var(--borderWidth) solid #332217;
+}
+
+.close {
+    margin-top: 0;
+    right: unset;
+}
+
+footer {
+    font-family: Alliance, sans-serif;
 }

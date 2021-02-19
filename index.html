@@ -909,14 +909,14 @@
               </svg>
             </div>
           </div>
-          
+         
           <div class="white">
             <div class="overflow-hidden width-full position-relative z-1">
-              <div class="container-xl p-responsive-fluid mx-auto" style="position: inherit;">
+              <div class="container-xl p-responsive-fluid mx-auto inherit_pos">
                 <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid position-relative">
             
                   <div class="home-git-log-light col-12 offset-md-1 pt-6-fluid">
-                    <div>
+                    
                     <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid js-section" id="home-collaborate">
         
         
@@ -2225,17 +2225,34 @@ background: #ffffff;
                       <div class="position-relative" style="
       /* height: 340px; */
   ">
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
                         <div class="rounded-2-fluid home-packages-terminal f5-mktg-fluid p-4-fluid text-mono" style="
       height: 340px;
   ">
-                          <pre class="pre-line text-white home-pre js-type-in">                    <span class="text-bold code-green">(my-env) .\my-project </span> <span class="js-type-letters animation-is-typing" style="visibility: hidden;">pip install smart-neural-ie</span>
-                            <span class="js-type-row" style="visibility: hidden;">pip install smart-neural-ie</span>
-                            <span class="js-type-row" style="visibility: hidden;"> </span>
-                            <span class="js-type-row" style="visibility: hidden;">Downloading smart-neural-ie-1.0-py3-none-any.whl (1.5 MB)</span>
-                            <span class="js-type-row" style="visibility: hidden;">&nbsp;&nbsp;run `npm fund` for details</span>
-                            <span class="js-type-row" style="visibility: hidden;"></span>
-                            <span class="js-type-row" style="visibility: hidden;">found 0 vulnerabilities</span>
-                            <span class="js-type-row" style="visibility: hidden;"> <span class="text-bold code-green">(my-env) .\my-project</span></span> <span class="js-type-letters animation-is-typing" style="visibility: hidden;"> </span>
+                          <pre class="pre-line text-white home-pre js-type-in"> 
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;">from smartnie import SmartNeuralIe</span>
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;"> </span>
+                            <span class="js-type-letters animation-is-typing text-bold code-green" style="visibility: hidden;"> <span class=""># Used types of neurogeometric filters</span></span>
+                            <span class="js-type-letters animation-is-typing text-bold code-green" style="visibility: hidden;"> <span class="text-bold code-green"># for classify images task</span></span>
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;">ngeometry_f = {"gaussian":True, "lie_groups":True}</span>
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;"> </span>
+                            <span class="js-type-letters animation-is-typing text-bold code-green" style="visibility: hidden;"> <span class="text-bold code-green"># Automate model building</span></span>
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;"> nn_model = SmartNeuralIe(auto=True, n_geometry=ngeometry_f)</span>
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;"> </span>
+                            <span class="js-type-letters animation-is-typing" style="visibility: hidden;">nn_model.fit(X=X_train, y=y_train)</span>
                           </pre>
                         </div>
       
@@ -2632,7 +2649,7 @@ background: #ffffff;
           <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid position-relative">
       
             <div class="home-git-log-light col-12 offset-md-1 pt-6-fluid no_trees">
-              <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid js-section" id="home-collaborate">
+              <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid js-section" >
                 <div class="home-git-log-light col-10 offset-1 pb-6-fluid pt-6-fluid pt-md-0-fluid line_height">
 
                   <div class="col-5-max">
@@ -2946,7 +2963,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                         <img src="discussions-check.svg" class="home-discussions-check-2 js-build-in-item position-absolute z-1" alt="Floating checkmark" loading="lazy">
                         <img src="discussions-check.svg" class="home-discussions-check-3 js-build-in-item position-absolute z-1" alt="Floating checkmark" loading="lazy">
           
-                        <img src="./images/products/_11.webp" class="width-full prod_img"  loading="lazy">
+                        <img src="./images/products/11_.webp" class="width-full prod_img"  loading="lazy">
 
 
 <p style="
@@ -3152,7 +3169,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                           <span class="js-type-row" style="visibility: visible;">Downloading smart-neural-ie-1.0-py3-none-any.whl (1.5 MB)</span>
                           <span class="js-type-row" style="visibility: visible;">&nbsp;&nbsp;run `npm fund` for details</span>
                           <span class="js-type-row" style="visibility: visible;"></span>
-                          <span class="js-type-row" style="visibility: visible;">found 0 vulnerabilities</span>
                           <span class="js-type-row" style="visibility: visible;"> <span class="text-bold code-green">(my-env) .\my-project></span></span> <span class="js-type-letters animation-is-typing" style="visibility: visible;"> </span>
                         </pre>
                       </div>
@@ -4123,6 +4139,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 </script>
 
         <script >
+          $("a[href$='#plasma_control']").click(function(){
+            $(".inherit_pos").css("position", "absolute");
+            $(".inherit_pos").css("position", "inherit");
+          });
+
+
 
           $(window).on('resize scroll', function() {
             

@@ -189,7 +189,7 @@
     .comparative-select-wrapper{margin-top:15px;}
     .comparative-select-wrapper .comparative-select:first-child{margin-top:0;}
     .comparative .cta-group__prices{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
-    .comparative .cta-group__prices .cta-group__current-price{justify-self:flex-end;}
+    .comparative .cta-group__prices .cta-group__current-price{justify-self:flex-end; text-align: center;}
     @media (min-width:1200px){
     .comparative .boxshot-wrapper{float:left;margin:0 20px 0 0;}
     .comparative .boxshot-wrapper img{width:auto;max-height:160px;}
@@ -394,6 +394,7 @@ h3 {
     text-align: center;
     padding-bottom: 40px;
     margin-top: 60px;
+    font-family: Alliance, sans-serif;
 }
 
 .btn {
@@ -442,3 +443,28 @@ h3 {
 footer {
     font-family: Alliance, sans-serif;
 }
+
+a.button {
+    margin: 0;
+    width: 173px;
+    height: 58px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.button.green span::before {
+    color: #205400;
+    background-color: #ededed;
+}
+
+.button.violet span::before {
+    color: #5a1d5f;
+    background-color: #ededed;
+}
+
+.button.brown span::before {
+    color: #332217;
+    background-color: #ededed;
+}
+

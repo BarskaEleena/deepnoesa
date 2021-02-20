@@ -227,6 +227,7 @@
     margin: 0;
     padding: 15px;
     padding-left: 0;
+    padding-right: 23px;
 }
 .select-box__list {
     position: absolute;
@@ -331,7 +332,7 @@
     width: calc(100% - 60px);
   }
 
-.group input 				{
+.group input , .group textarea 			{
     font-size:18px;
     padding:10px 10px 10px 5px;
     display:block;
@@ -339,7 +340,7 @@
     border:none;
     border-bottom:1px solid #757575;
   }
-  .group  input:focus 		{ outline:none; }
+  .group  input:focus, .group  textarea:focus 		{ outline:none; }
   
   /* LABEL ======================================= */
   .group label 				 {
@@ -357,11 +358,20 @@
   }
   
   /* active state */
+  .group textarea:focus ~ label		{
+    top:-20px;
+    font-size:14px;
+    color:#602665;
+  }
+
   .group input:focus ~ label, .group input:valid ~ label 		{
     top:-20px;
     font-size:14px;
     color:#602665;
   }
+
+
+ 
   
   /* BOTTOM BARS ================================= */
   .group .bar 	{ position:relative; display:block; width:100%; }
@@ -384,9 +394,29 @@
   }
   
   /* active state */
-  .group input:focus ~ .bar:before, .group input:focus ~ .bar:after {
+  .group textarea:focus ~ .bar:before, .group textarea:focus ~ .bar:after {
     width:50%;
+    color: red;
   }
+
+ /* active state */
+ .group input:focus ~ .bar:before, .group input:focus ~ .bar:after {
+  width:50%;
+  color: red;
+}
+
+  textarea,
+textarea:hover, 
+textarea:active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+    border: unset;
+    border-bottom:1px solid #757575;
+}
+
+
   
   /* HIGHLIGHTER ================================== */
   .group .highlight {
@@ -400,7 +430,7 @@
   }
   
   /* active state */
-.group input:focus ~ .highlight {
+.group textarea:focus ~ .highlight {
     -webkit-animation:inputHighlighter 0.3s ease;
     -moz-animation:inputHighlighter 0.3s ease;
     animation:inputHighlighter 0.3s ease;
@@ -486,6 +516,17 @@
 }
 
 
+.question:hover .question_i {
+  display: block;
+}
 
-
-
+.question_i {
+  display: none;
+  position: absolute;
+  margin-top: 81px;
+  background: #00000099;
+  color: white;
+  padding: 10px 5px;
+  border-radius: .375rem!important;
+  font-size: 15px;
+}

@@ -24,12 +24,6 @@
 }
 
 .mt_1 {
-    background: -webkit-linear-gradient(
--70deg
-,#602665,#0d8036,#756de9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-box-decoration-break: clone;
     font-size: 4.5rem!important;
     text-align: center;
     width: 100%;
@@ -39,7 +33,12 @@
     position: inherit;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 70px;
+    z-index: 0;
+    display: flex;
+    background: #ffffff87;
+    margin: 50px 100px;
+    border-radius: .375rem!important;
+    padding: 50px 0;
 }
 
 canvas {
@@ -48,7 +47,6 @@ canvas {
 
 
 #bm {
-    /*transform: scale(3);*/
     position: relative;
     left: unset;
     right: unset;
@@ -57,6 +55,8 @@ canvas {
 
 .contact_form {
     font-size: 30px;
+    width: 400px;
+    margin-right: 100px;
 }
 
 .field {
@@ -72,3 +72,36 @@ canvas {
 .field p {
     margin: 0;
 }
+
+.contact_text {
+    font-size: 22px;
+    width: 20%;
+}
+
+.contact_text a {
+    color: #5d2964;
+}
+
+a.button {
+    width: 100%;
+}
+
+.close {
+    position: relative;
+    margin-top: 0;
+    width: 20px;
+    height: 20px;
+    right: unset;
+}
+
+.close:before, .close:after {
+    height: 16px;
+    width: 2px;
+    background-color: #828282;
+}
+
+.privacy {
+    z-index: 2;
+    bottom: 0;
+}
+

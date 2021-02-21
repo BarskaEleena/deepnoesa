@@ -2628,11 +2628,11 @@ flex-lg-row {
 
 .invert_block_text {
     display: flex;
-    transform: rotate(-12deg);
+    transform: rotate(-12deg) scale(0.7);
     width: min-content;
     z-index: 1;
-    margin-top: 96px;
-    margin-left: -6px;
+    margin-top: 296px;
+    margin-left: -919px;
 }
 
 .explore {
@@ -2644,12 +2644,13 @@ flex-lg-row {
     font-size: 30px;
     border: 3px solid;
     border-radius: 31px;
-    padding: 11px 69px;
+    padding: 11px 73px;
     cursor: pointer;
     font-family: Alternate-Gothic;
     letter-spacing: 5px;
     background: #d8d7d7;
     animation: explore_animation 1s linear infinite;
+    
 }
 
 @keyframes explore_animation {
@@ -2806,6 +2807,7 @@ flex-lg-row {
 .menu_prod {
     color: black;
     width: 100%;
+    margin-top: 150px;
 }
 
 .menu_prod ul {

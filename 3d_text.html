@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+
+    <style>
+
+        @font-face {
+            font-family: SFMono;
+            src: url(./js/TCB_____.TTF);
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-shadow: border-box;
+            font-family: monospace;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgb(100, 32, 100);
+        }
+
+        
+
+        @keyframes animate_1 {
+            0% {
+                transform: perspective(1000px) rotateY(297deg) rotateX(-17deg) rotate(5deg);
+            margin-top: 276px;
+            margin-left: 237px;
+            }
+
+            15% {
+                transform: perspective(1000px) rotateY(325deg) rotateX(-20deg) rotate(14deg);
+                margin-top: 262px;
+                margin-left: 196px;
+            }
+
+            50% {
+                transform: perspective(1000px) rotateY(359deg) rotateX(-20deg) rotate(17deg);
+    margin-top: 265px;
+    margin-left: 162px;
+            }
+
+            75% {
+                transform: perspective(1000px) rotateY(325deg) rotateX(-20deg) rotate(14deg);
+                margin-top: 262px;
+                margin-left: 196px;
+            }
+            100% {
+                transform: perspective(1000px) rotateY(297deg) rotateX(-17deg) rotate(5deg);
+            margin-top: 276px;
+            margin-left: 237px;
+            }
+        }
+
+        @keyframes animate_1_1 {
+            0% {
+                transform: perspective(1000px) rotateY(300deg) rotateX(-17deg) rotate(5deg);
+                margin-top: 278px;
+                margin-left: 225px;
+            }
+
+            50% {
+                transform: perspective(1000px) rotateY(325deg) rotateX(-20deg) rotate(14deg);
+                margin-top: 262px;
+                margin-left: 196px;
+            }
+
+            100% {
+                transform: perspective(1000px) rotateY(359deg) rotateX(-20deg) rotate(17deg);
+                margin-top: 265px;
+                margin-left: 162px;
+            }
+        }
+
+        @keyframes animate_1_2 {
+            0% {
+                transform: perspective(1000px) rotateY(359deg) rotateX(-20deg) rotate(17deg);
+                margin-top: 265px;
+                margin-left: 162px;
+            }
+
+            100% {
+                transform: perspective(1000px) rotateY(325deg) rotateX(-20deg) rotate(14deg);
+                margin-top: 262px;
+                margin-left: 196px;
+            }
+        }
+
+        @keyframes animate_1_3 {
+            0% {
+                transform: perspective(1000px) rotateY(359deg) rotateX(-20deg) rotate(17deg);
+                margin-top: 265px;
+                margin-left: 162px;
+            }
+
+            50% {
+                transform: perspective(1000px) rotateY(325deg) rotateX(-20deg) rotate(14deg);
+                margin-top: 262px;
+                margin-left: 196px;
+            }
+
+            100% {
+                transform: perspective(1000px) rotateY(300deg) rotateX(-17deg) rotate(5deg);
+                margin-top: 278px;
+                margin-left: 225px;
+            }
+        }
+
+        @keyframes animate_1_4 {
+            0% {
+                transform: perspective(1000px) rotateY(359deg) rotateX(-20deg) rotate(17deg);
+                margin-top: 265px;
+                margin-left: 162px;
+            }
+
+            100% {
+                transform: perspective(1000px) rotateY(300deg) rotateX(-17deg) rotate(5deg);
+                margin-top: 278px;
+                margin-left: 225px;
+            }
+        }
+
+
+
+        @keyframes animate_2 {
+            0% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(114px);
+            }
+
+            15% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            }
+            50% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            }
+            100% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(114px);
+            }
+        }
+
+        @keyframes animate_2_1 {
+            0% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(114px);
+            }
+
+            100% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            }
+        }
+
+        @keyframes animate_2_2 {
+            0% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(114px);
+            }
+
+            100% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            }
+        }
+
+        @keyframes animate_2_3 {
+            0% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(114px);
+            }
+
+            100% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            }
+        }
+        
+        @keyframes animate_2_4 {
+            0% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(114px);
+            }
+
+            100% {
+                transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            }
+        }
+
+        .circle {
+            transform-style: preserve-3d;
+            animation: animate_1_1  1s ease-out  1 forwards,
+            animate_1_3  1s 2.1s ease-out 1 forwards,
+            animate_1_1  1s 3.1s ease-out 1 forwards,
+            animate_1_3  1s 4.1s ease-out 1 forwards;
+            /*animate_1_1  0.7s 4s linear 1 forwards,
+            animate_1_4  0.3s 6s linear 1 forwards; 
+            /* animate_1_3  0.3s 5s linear 1 forwards;*/ 
+            transform: perspective(1000px) rotateY(296deg)  rotateX(-15deg) rotate(5deg);
+            z-index: 999999999;
+            transform: perspective(1000px) rotateY(325deg) rotateX(-20deg) rotate(14deg);
+            margin-top: 262px;
+            margin-left: 196px;
+            position: absolute;
+        }
+
+        .circle .char {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #0000;
+            color: pink;
+            font-size: 2em;
+            transform-style: preserve-3d;
+            transform-origin: center;
+            transform: rotateY(calc(var(--char-index) * 12deg)) translateZ(105px);
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+
+            font-weight: 800;
+    font-family: SFMono;
+    animation: animate_2_1 0.7s linear 1 forwards, ; 
+        }
+
+
+       /* n% {
+    
+        }
+
+        n%{
+
+        }
+
+
+
+        n% {
+    
+}
+
+n%{
+
+}
+
+
+
+n% {
+    
+}
+
+n%{
+
+}*/
+
+
+        span.char:nth-child(1) {
+            color: #5b3c5a;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        span.char:nth-child(2) {
+            color: #523151;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        span.char:nth-child(3) {
+            color: #472546;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        span.char:nth-child(4) {
+            color: #411e40;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        span.char:nth-child(5) {
+            color:  #381437;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        span.char:nth-child(6) {
+            color: #2b042a;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="bot_b">
+        <div class="circle" data-splitting data-text="BARSKA">BARSKA</div>
+
+    <script
+                  src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                  <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_768yfbtu.json" background="transparent" speed="1" style="width: 400px;" autoplay controls ></lottie-player>
+              
+
+    </div>
+    
+    <script src="G:\Eleena\heroku\github\neuroaesthetics2\js\Splitting-master\dist/splitting.js"></script>
+    <script> Splitting(); </script>
+</body>
+</html>

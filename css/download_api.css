@@ -468,3 +468,18 @@ a.button {
     background-color: #ededed;
 }
 
+.staging-store-bg .comparative-facelift .comparative__row:not(.comparative__last-row) {
+    padding-bottom: 0;
+}
+
+.staging-store-bg .comparative-facelift .comparative__row:not(.comparative__last-row)>[class^=col-] {
+    margin-top: 145px;
+}
+
+.new-comparison-wrapper {
+    margin-top: 20px;
+}
+
+#main .staging-store-bg .comparative-facelift .comparative__row:not(.comparative__last-row) .comparative__presentation {
+    margin-top: 0px;
+}

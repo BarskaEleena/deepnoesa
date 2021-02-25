@@ -843,8 +843,9 @@
       .unselectable{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
       .home-git-log-light{position:relative;}
       @media (min-width:544px){
-      .home-git-log-light:after{left:-1.5rem;}
+      .home-git-log-light:after{left:-1.5rem;margin-bottom: 56px;}
       }
+      @media (min-width: 544px) {.home-git-log-light.add:after {margin-top: 263px;}}
       .home-git-log-light .home-git-heart-icon,.home-git-log-light .home-git-icon{background:#fff;}
       .home-git-log-light .home-git-heart-icon>path,.home-git-log-light .home-git-icon>path{fill:#dadfe9;}
       .home-git-log-light .home-git-icon>circle{fill:#fff;stroke:#dadfe9;}
@@ -1095,7 +1096,9 @@
       .home-git-log-dark{position:relative;}
       .home-git-log-dark:after{position:absolute;top:0;bottom:0;left:-.25rem;display:block;width:5px;content:"";}
       @media (min-width:544px){
-      .home-git-log-dark:after{left:-1.5rem;}
+      .home-git-log-dark:after{left:-1.5rem;margin-bottom: 56px;}
+      .home-git-log-dark.other_line:after,.home-git-log-dark.other_linee:after{left:-1.5rem;margin-bottom: 51px;top: 38px;}
+      .home-git-log-dark.other_linee:after{    height: 5011px;top: -500px;}
       }
       .home-git-log-dark .home-git-icon>path{fill:#42526d;}
       .home-git-log-dark .home-git-icon>circle{fill:#909090;stroke:#42526d;}

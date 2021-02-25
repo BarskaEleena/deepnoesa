@@ -112,10 +112,11 @@
   $(window).load(function() { 
     var svg = document.querySelector(".preloader_shining");
     svg.classList.add("anim"); 
+    svg.style.opacity = 0;
 
     setTimeout(function(){
       svg.style.opacity = 1;
-    }, 2000);
+    }, 1000);
     //window.stop();
 
     setTimeout(function(){

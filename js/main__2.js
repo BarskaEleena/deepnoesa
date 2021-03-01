@@ -18,8 +18,8 @@
       options.stageWidth          = options.hasOwnProperty('stageWidth') ? options.stageWidth : 996;
      options.stageHeight         = options.hasOwnProperty('stageHeight') ? options.stageHeight : 3264;
     } else if (options.classname.indexOf('team_photo') >= 0){
-      options.stageWidth          = options.hasOwnProperty('stageWidth') ? options.stageWidth : 300;
-      options.stageHeight         = options.hasOwnProperty('stageHeight') ? options.stageHeight : 300;
+      options.stageWidth          = options.hasOwnProperty('stageWidth') ? options.stageWidth : 415;
+      options.stageHeight         = options.hasOwnProperty('stageHeight') ? options.stageHeight : 415;
     } else {
       options.stageWidth          = options.hasOwnProperty('stageWidth') ? options.stageWidth : 600;
       options.stageHeight         = options.hasOwnProperty('stageHeight') ? options.stageHeight : 791;
@@ -109,8 +109,8 @@
         }
       } else if (options.classname.indexOf('team_photo') >= 0){
         renderer.view.style.objectFit = 'contain';
-        renderer.view.style.width     = '300px';
-        renderer.view.style.height    = '300px';
+        renderer.view.style.width     = '415px';
+        renderer.view.style.height    = '415px';
       } else {
         // Fit renderer to the screen
         if ( options.fullScreen === true ) {

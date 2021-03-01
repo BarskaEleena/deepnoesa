@@ -530,3 +530,12 @@ textarea:active
   border-radius: .375rem!important;
   font-size: 15px;
 }
+
+
+#preloader {
+  background-color: #696969;
+}
+
+.loader_text {
+  color: white;
+}

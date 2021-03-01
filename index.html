@@ -12,6 +12,7 @@
         <link  rel="stylesheet" href="./css/site.css">
         <link rel="stylesheet" href="./css/styles2.css">
         <script type="text/javascript" src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+        
         <link rel="stylesheet" href="./css/main_styles.css">
 
         <script src="./js/babel.min.js" ></script>
@@ -92,12 +93,11 @@
         <script type="text/babel">
             setTimeout(function(){
                 document.querySelector(".disintegration-target").disintegrated = true;
-                disintegrate(document.querySelector(".disintegration-target"));
+                //disintegrate(document.querySelector(".disintegration-target"));
             }, 1800);
         </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js"></script>
 <script src="./js/html2canvas.min.js"></script>
 <script src="./js/chance.min.js"></script>
 
@@ -108,7 +108,7 @@
     document.body.appendChild(clon);
   }
   
-
+  
   $(window).load(function() { 
     var svg = document.querySelector(".preloader_shining");
     svg.classList.add("anim"); 
@@ -142,6 +142,10 @@
             }
         }
     }
+
+
+
+            
     
     function show_page() {
         document.querySelector("#preloader").style.display = "none";
@@ -151,15 +155,6 @@
         document.body.style.overflowX = "hidden";
     }
 
-    var animation = bodymovin.loadAnimation({
-      container: document.getElementById('bm'),
-      renderer: 'canvas',
-      loop: true,
-      autoplay: true,
-      path: 'https://assets1.lottiefiles.com/packages/lf20_uelobfpz.json'
-    });
-
-    animation.play();
 
     setTimeout(function(){ 
             var dots = document.querySelectorAll('svg.dots ellipse');
@@ -303,8 +298,8 @@
                     }
 
                     setTimeout(function(){
-                        show_page();
-                    }, 3000);
+                        //show_page();
+                    }, 4000);
                  }, 1000);
             }, 4000);
         }, 1300);
@@ -336,6 +331,7 @@
 <body data-new-gr-c-s-check-loaded="14.996.0" data-gr-ext-installed="">
 
 <template>
+  <div class="scheme_big"></div>
   <div id="main">
     <div class="menu">
         <div class="menu_logo">
@@ -417,12 +413,11 @@
         ">Input your message</p>
             <div style="
             display: flex;
-            background: #5a1d5f;
-            padding-bottom: 10px;
-            padding-left: 10px;
-            padding-right: 10px;
+            background: #fff;
+            padding: 10px;
+            background: #ffffffcf;
         ">
-        <textarea style="font-size: 20px; height: 65px; overflow-wrap: anywhere; margin: 0px; width: 210px;"></textarea>
+        <textarea style="font-size: 20px; height: 65px; overflow-wrap: anywhere; margin: 0px; width: 210px;border: none;    background: #ffffff00;"></textarea>
                           <div class="send">
                             <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="69.7px" height="69.2px" viewBox="0 0 69.7 69.2" enable-background="new 0 0 69.7 69.2" xml:space="preserve" style="
                                 width: 25px;
@@ -430,9 +425,9 @@
                                 height: auto;
                                 color: white;
                             ">
-                            <path stroke="#fff" stroke-miterlimit="10" d="M5.8,29.8l-5-28.2C0.7,1.2,1.1,1,1.4,1.1l67.1,32.8c0.3,0.2,0.3,0.6,0,0.8
+                            <path stroke="#5a1d5f" stroke-miterlimit="10" d="M5.8,29.8l-5-28.2C0.7,1.2,1.1,1,1.4,1.1l67.1,32.8c0.3,0.2,0.3,0.6,0,0.8
                               L1.4,68.2c-0.3,0.2-0.7-0.1-0.6-0.4l4.6-28.9c0-0.2,0.2-0.3,0.4-0.4l38.5-3.5c0.5,0,0.5-0.8,0-0.8L6.1,30.1C6,30.1,5.8,30,5.8,29.8z
-                              " style="fill: #fff;"></path>
+                              " style="fill: #5a1d5f;"></path>
                             </svg>
                           </div>
                 </div>
@@ -444,7 +439,7 @@
       <div id="bm" style="width:200px;height:300px;">
           <script
           src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-          <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_768yfbtu.json" background="transparent" speed="1" style="width: 200px; height: 300px;" loop  autoplay></lottie-player>
+          <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_urmqkyhg.json" background="transparent" speed="1" style="width: 200px; height: 300px;" loop  autoplay></lottie-player>
       </div>
 
         <div class="more_info_window">
@@ -667,8 +662,7 @@ width: 400px;
   ">
 
     </div>
-<div id="eyes">
-</div>
+<!--<div id="eyes"></div>-->
 
 <div class="explore">Explore</div>
 
@@ -2975,7 +2969,7 @@ text-transform: uppercase;
     </div>
   </div>
 
-  <canvas id="gr_animation_canvas"></canvas>
+  <!--<canvas id="gr_animation_canvas"></canvas>-->
 </div>
 
 </div>
@@ -4399,6 +4393,11 @@ $(document).ready(function() {
   const text_animation = document.querySelector('.headline--yell');
   const smmm = document.querySelector('.dodo');
 
+  function sleep(ms) {
+              return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+
 
   var lllll = 0;
   document.addEventListener('scroll', function () {
@@ -4420,8 +4419,10 @@ console.log('not');
       if (isInViewport(main_block)) {
         if (document.querySelector(".chatbot_wrapper").style.display == "block") {
           document.querySelector(".chatbot_wrapper").style.display = "none";
+        } 
+      } else {
+          document.querySelector(".chatbot_wrapper").style.display = "block";
         }
-      }
 
       if (isInViewport(husserl_button)) {
         husserl_button.classList.add("animate");
@@ -4602,8 +4603,8 @@ console.log('not');
 
 
         $(".send").click(function() {
-          var message = document.querySelector('.input_block input').value;
-          document.querySelector('.input_block input').value = "";
+          var message = document.querySelector('.input_block textarea').value;
+          document.querySelector('.input_block textarea').value = "";
           var newDiv = document.createElement("div");
           newDiv.innerHTML = "<p>"+message+"</p>"; 
           newDiv.classList.add("message_client");

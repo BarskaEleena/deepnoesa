@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+ version="1.1"
+ width="100%" height="100%" viewBox="-5 -55 110 110"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns="http://www.w3.org/2000/svg">
+ <title>Oscillograph Sinus simplified</title>
+ <defs>
+  <path id="sin" d="m0 0c42 167 84 300 125 300" fill="none" />
+  <use id="si" xlink:href="#sin" transform="scale(0.1,-0.1)" />
+  <pattern id="test" width="10" height="10" patternUnits="userSpaceOnUse">
+	<rect width="10" height="10" fill="none" stroke="blue" stroke-width="0.15"/>
+  </pattern>
+  <g id="hf" >
+	<use xlink:href="#si" />
+	<use xlink:href="#si" transform="translate(25) scale(-1,1)"/>
+  </g>
+    <g id="gz" >
+	<use xlink:href="#hf" />
+	<use xlink:href="#hf" transform="translate(50) scale(-1,-1)"/>
+  </g>
+ </defs>
+ <rect width="100" height="100" fill="url(#test) none" y="-50" />
+ <g stroke="red" stroke-width="4" >
+ <use xlink:href="#gz" />
+ <use xlink:href="#gz" transform="translate(50)" />
+ </g>
+</svg>

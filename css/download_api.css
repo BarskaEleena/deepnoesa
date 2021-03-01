@@ -483,3 +483,11 @@ a.button {
 #main .staging-store-bg .comparative-facelift .comparative__row:not(.comparative__last-row) .comparative__presentation {
     margin-top: 0px;
 }
+
+#preloader {
+    background-color: #696969;
+  }
+
+  .loader_text {
+    color: white;
+  }

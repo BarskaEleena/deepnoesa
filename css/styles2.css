@@ -2633,7 +2633,7 @@ flex-lg-row {
     margin-left: -919px;
 }
 
-.invert_block .explore {
+.invert_block .explore, .explore_eyes {
     margin-top: 60px;
     color: black;
     font-weight: bolder;
@@ -2910,7 +2910,7 @@ flex-lg-row {
     position: absolute;
     z-index: 10;
     justify-content: center;
-    height: 870px;
+    height: 100vh;
     background: #b5b5b57a;
 }
 
@@ -2922,9 +2922,7 @@ flex-lg-row {
 .gr_animation canvas {
     border: none;
     width: 100vw;
-    height: 870px;
     filter: grayscale(1) ;
-
 }
 
 .neuroaesthetics_continue p {
@@ -3632,6 +3630,7 @@ div .scheme_wrapper {
     background-image: linear-gradient(0deg,#602665,#0d8036,#7919d8, #756de9,#602665,#0d8036,#7919d8);
     background-size: 100% 211%;
     height: 4996px;
+    margin-right: -43px!important;
 }
 
 .line_ {
@@ -4002,7 +4001,7 @@ html, body {
     left: 60px;
 }
 
-.explore:before {
+.explore:before, .explore_eyes:before {
     content: " ";
     position: absolute;
     z-index: -1;
@@ -4186,3 +4185,28 @@ span.char:nth-child(6) {
     font-size: 1.2em!important;
     transform: rotateY(calc(var(--char-index) * 10deg)) translateZ(74px)!important;
 }
+
+#eyes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.eye_text_block {
+    display: none;
+}
+
+#gr_animation_canvas {
+    height: 100vh;
+}
+
+  .whale_arrow {
+    width: 1360px;
+    transform: rotate3d(25, 3, 8, -67deg) rotate(-5deg);
+    position: absolute;
+    z-index: 9999999;
+    margin-top: 646px;
+    margin-left: 92px;
+}
+

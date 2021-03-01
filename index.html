@@ -93,7 +93,7 @@
         <script type="text/babel">
             setTimeout(function(){
                 document.querySelector(".disintegration-target").disintegrated = true;
-                //disintegrate(document.querySelector(".disintegration-target"));
+                disintegrate(document.querySelector(".disintegration-target"));
             }, 1800);
         </script>
 
@@ -298,7 +298,7 @@
                     }
 
                     setTimeout(function(){
-                        //show_page();
+                        show_page();
                     }, 4000);
                  }, 1000);
             }, 4000);
@@ -662,9 +662,19 @@ width: 400px;
   ">
 
     </div>
-<!--<div id="eyes"></div>-->
+<div id="eyes">
 
-<div class="explore">Explore</div>
+  <div class="eye_text_block" style="/* height: 100%; */width: 100%;color: black;font-size: 25px;padding: 0 20%;">
+    <p style="font-weight:bold;font-size:30px;">Stole goota</p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    
+    Why do we use it?
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    </div>
+
+</div>
+
+<div class="explore_eyes">Explore</div>
 
 <body data-new-gr-c-s-check-loaded="14.996.0" data-gr-ext-installed="" style="cursor: pointer;">
 
@@ -2353,12 +2363,11 @@ background: #ffffff;
     </div>
   </div>
 
-
 <div class="whales">
 <link href="./waves.css" rel="stylesheet" type="text/css">
-  <div id="overlay" style="width: 1858px; height: 620px; cursor: grab;"></div>
+  <div id="overlay" style="width: 1858px; height: 620px; cursor: grab;"></div> 
   <div id="ui" style="width: 1858px; height: 620px; top: 0px; perspective: 536.936px;">
-    
+   
   <div id="camera" style="width: 1858px; height: 620px; transform: translate3d(0px, 0px, 536.936px) matrix3d(0.92438, -0.189282, -0.3312, 0, 0, -0.868215, 0.496188, 0, 0.381472, 0.458666, 0.802561, 0, -44.0074, -313.056, -2047.78, 1) translate3d(929px, 310px, 0px);">
           <canvas id="profile" width="350" height="105"></canvas>
           <div id="length"></div>
@@ -2376,12 +2385,7 @@ background: #ffffff;
           <div id="choppiness-label">CHOPPINESS</div>
       <div style="position: absolute; width: 66.6667px; height: 3px; background-color: rgb(52, 137, 189); transform-origin: center top; transform: translate3d(-200px, 0px, 1100px) rotateX(90deg);"></div><div style="position: absolute; width: 333.333px; height: 3px; background-color: rgb(153, 153, 153); transform-origin: center top; transform: translate3d(-133.333px, 0px, 1100px) rotateX(90deg);"></div><div style="position: absolute; width: 24px; height: 24px; border-radius: 12px; background: rgb(102, 102, 102); transform-origin: center top; transform: translate3d(-157.333px, 0px, 1088px) rotateX(90deg);"></div><div style="position: absolute; width: 180px; height: 6px; background-color: rgb(52, 137, 189); transform-origin: center top; transform: translate3d(-1420px, 0px, 75px) rotateX(90deg);"></div><div style="position: absolute; width: 120px; height: 6px; background-color: rgb(153, 153, 153); transform-origin: center top; transform: translate3d(-1240px, 0px, 75px) rotateX(90deg);"></div><div style="position: absolute; width: 30px; height: 30px; border-radius: 15px; background: rgb(102, 102, 102); transform-origin: center top; transform: translate3d(-1270px, 0px, 60px) rotateX(90deg);"></div><div style="position: absolute; width: 80px; background: rgb(52, 137, 189); transform-origin: center top; transform: translate3d(-1290px, 0px, 500px) rotateX(90deg) rotateZ(-0.785398rad) translateY(-40px); height: 94.1371px;"></div><div style="position: absolute; border-style: solid; border-color: rgb(52, 137, 189) transparent transparent; border-width: 60px 80px 0px; transform-origin: center top; transform: translate3d(-1330px, 0px, 500px) rotateX(90deg) rotateZ(-0.785398rad) translateY(52.1371px);"></div></div>
   </div>
-  <div class="menu_block" style="
-  z-index: 99999;
-  position: absolute;
-  margin-top: 64px;
-  right: 22px;
-">
+  <div class="menu_block" style="z-index: 99999;position: absolute;margin-top: 64px;right: 22px;">
                   <ul>
                       <li><a href="./pricing.html">Pricing</a></li>
                       <li><a href="./team.html">Team</a></li>
@@ -2390,15 +2394,18 @@ background: #ffffff;
                       <li class="menu_signup"><a href="./sign_up.html">Sign Up</a></li>
                   </ul>
                 </div>
-  <div class="menu_logo" style="
-  align-items: flex-start;
-  position: absolute;
-  z-index: 999;
-  left: 0;
-">
+  <div class="menu_logo" style="align-items: flex-start;position: absolute;z-index: 999;left: 0;">
                   <img id="logo" src="./images/main_logo.svg">
                   <img src="./images/logo_text.svg" style="margin-top: 10px;height: 25px;left: 0;margin-left: -571px;">
               </div>
+
+              <img src="./images/sin.png" style="
+    z-index: 9999;
+    position: absolute;
+    width: 600px;
+    left: -226px;
+    margin-top: 200px;
+">
 
               <div style="
               z-index: 999999;
@@ -2425,15 +2432,13 @@ background: #ffffff;
                           </a>
           </div>
 
-          <div style="
-position: absolute;
-width: 3px;
-height: 1000px;
-background: #333333;
-z-index: 9999999;
-margin-top: 189px;
-transform: rotate(76deg);
-"></div>
+          <svg version="1.1" id="Layer_1" xmlns:x="&amp;ns_extend;" xmlns:i="&amp;ns_ai;" xmlns:graph="&amp;ns_graphs;" 
+          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+          viewBox="0 0 762 45.667" xml:space="preserve" class="whale_arrow">
+            <path style="fill:none;stroke:#333333;stroke-width:5;stroke-miterlimit:10;" d="M742.375,3.458l16.058,17.319
+             c0.814,0.878,0.817,2.235,0.005,3.116l-16.063,17.439"></path>
+            <line style="fill:none;stroke:#333333;stroke-width:7;stroke-miterlimit:10;" x1="759" y1="22.833" x2="0" y2="22.833"></line>
+            </svg>
 
 
   <canvas id="simulator" width="1858" height="620"></canvas>
@@ -2605,7 +2610,7 @@ height: 340px;
     0deg
     ,#602665,#0d8036,#7919d8, #756de9,#602665,#0d8036,#7919d8);
         background-size: 100% 211%;
-        height: 890px;
+        height: 853px;
         margin-left: -49px;
         top: 39px;
         "></div><div class="line_" style="
@@ -2892,7 +2897,7 @@ background: #ffffff;
 
 
 
-<div class="gr_animation">
+<div class="gr_animation" style="height: 100vh;">
   <div class="menu_logo" style="
     align-items: flex-start;
     position: absolute;
@@ -2969,7 +2974,7 @@ text-transform: uppercase;
     </div>
   </div>
 
-  <!--<canvas id="gr_animation_canvas"></canvas>-->
+  <canvas id="gr_animation_canvas"></canvas>
 </div>
 
 </div>
@@ -2989,12 +2994,12 @@ text-transform: uppercase;
   ,#602665,#0d8036,#7919d8, #756de9,#602665,#0d8036,#7919d8);
       background-size: 552% 234%;
       height: 2000px;
-      margin-left: -24px;
+      margin-left: -49px;
       position: absolute;
   "></div>
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="20" viewBox="0 0 28 20" width="28" style="
   margin-top: -14px;
-  margin-left: -35px;
+  margin-left: -60px;
   position: absolute;
   background: white;
 "><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
@@ -3170,7 +3175,7 @@ margin-top: -170px;
 </div>
 
 <div style="position: relative;margin-left: 17rem;">
-<img src="./images/favicon.svg" class="favicon_small" style="position: absolute;bottom: -33px;width: 18px;left: 106px;bottom:0;margin-bottom: -36px;margin-bottom: -28px;">
+<img src="./images/favicon.svg" class="favicon_small" style="position: absolute;bottom: -33px;width: 18px;left: 81px;bottom:0;margin-bottom: -36px;margin-bottom: -28px;">
 <img src="./images/favicon.svg" class="favicon_small" style="position: absolute;bottom: -33px;width: 18px;left: 191px;bottom:0;margin-bottom: -28px;color: #dadfe9;/* filter: brightness(0.5); */">
 </div>
 
@@ -3811,7 +3816,7 @@ z-index: 99;
 <div class="container-xl p-responsive-fluid">
 <img src="./images/management.png" class="formula_management">
 <div class="d-flex flex-column gutter-fluid gutter-spacious-fluid" style="position: relative;">
-  <img src="./images/favicon.svg" class="favicon_small" style="/* position: absolute; */bottom: -13px;/* width: 18px; *//* right: -7px; *//* background: #636363; *//* z-index: 99999; *//* padding-bottom: 42px; *//* padding-top: 14px; */filter: invert(1) brightness(1.0);position: absolute;bottom: 31px;width: 18px;right: -7px;/* z-index: 99999; */filter: invert(1) brightness(1.0);z-index: 999999999;">
+  <img src="./images/favicon.svg" class="favicon_small" style="/* position: absolute; */bottom: -13px;/* width: 18px; *//* right: -7px; *//* background: #636363; *//* z-index: 99999; *//* padding-bottom: 42px; *//* padding-top: 14px; */filter: invert(1) brightness(1.0);position: absolute;bottom: 31px;width: 18px;right: -50px;/* z-index: 99999; */filter: invert(1) brightness(1.0);z-index: 999999999;">
   <img src="./images/favicon.svg" class="favicon_small" style="position: absolute;bottom: -59px;width: 18px;right: 60px;position: absolute;bottom: 31px;width: 18px;right: 59px;z-index: 99999;filter: invert(1) brightness(1.0);">
   <div class="home-git-log-light main_back_line_right add">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="20" viewBox="0 0 28 20" width="28" style="
@@ -3824,7 +3829,7 @@ z-index: 99;
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="20" viewBox="0 0 28 20" width="28" style="
 position: absolute;
 top: -59px;
-right: -12px;
+right: -54px;
 background: #636363;
 "><circle cx="14" cy="10" fill="#fff" r="5" stroke="#d0d6df" stroke-width="2"></circle></svg>
   </div>
@@ -4316,6 +4321,18 @@ $(document).ready(function() {
     $(".inherit_pos").css("position", "inherit");
   });
 
+  
+  $(".explore_eyes").click(function(){
+    if (document.querySelector("#eyes").style.height == "60vh") {
+      document.querySelector("#eyes canvas").style.display = "block";
+      document.querySelector(".eye_text_block").style.display = "none";
+      document.querySelector("#eyes").style.height = "100vh";
+    } else {
+      document.querySelector("#eyes canvas").style.display = "none";
+      document.querySelector(".eye_text_block").style.display = "block";
+      document.querySelector("#eyes").style.height = "60vh";
+    }
+  });
 
   let ss = 0;
   $(window).on('resize scroll', function() {

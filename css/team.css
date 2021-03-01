@@ -13,7 +13,6 @@ body {
     display: flex;
     align-items: center;
     width: 70%;
-    margin-bottom: 100px;
 }
 
 .team_member img {
@@ -80,6 +79,8 @@ body {
     font-size: 4.5rem!important;
     text-align: center;
     padding-bottom: 100px;
+    align-items: center;
+
 }
 
 

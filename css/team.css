@@ -106,3 +106,8 @@ body {
             -webkit-text-fill-color: transparent;
             -webkit-box-decoration-break: clone;
 }
+
+
+.flex_clmn .explore::before, .flex_clmn .explore::after  {
+    border: none;
+}

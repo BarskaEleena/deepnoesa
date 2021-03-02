@@ -14,7 +14,11 @@
     //  OPTIONS
     /// ---------------------------      
     options                     = options || {};
-    if ( options.classname == "team_back_block" ) {
+    if ( options.classname.indexOf('gray_logo') >= 0) {
+      options.stageWidth          = options.hasOwnProperty('stageWidth') ? options.stageWidth : 527;
+     options.stageHeight         = options.hasOwnProperty('stageHeight') ? options.stageHeight : 245;
+    } 
+    else if ( options.classname == "team_back_block" ) {
       options.stageWidth          = options.hasOwnProperty('stageWidth') ? options.stageWidth : 996;
      options.stageHeight         = options.hasOwnProperty('stageHeight') ? options.stageHeight : 3264;
     } else if (options.classname.indexOf('team_photo') >= 0){
@@ -107,7 +111,15 @@
           renderer.view.style.width     = '996px';
           renderer.view.style.height    = '5264px';   
         }
-      } else if (options.classname.indexOf('team_photo') >= 0){
+      }  else if ( options.classname.indexOf('gray_logo') >= 0) {
+
+       renderer.view.style.objectFit = 'unset';
+          renderer.view.style.width     = '527px';
+          renderer.view.style.height    = '245px';     
+          renderer.view.style.background = '#626262';
+      } 
+      
+      else if (options.classname.indexOf('team_photo') >= 0){
         renderer.view.style.objectFit = 'contain';
         renderer.view.style.width     = '415px';
         renderer.view.style.height    = '415px';
